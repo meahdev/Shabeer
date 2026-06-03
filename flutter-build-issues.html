@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flutter Build Issues & Solutions | Muhammed Shabeer TM</title>
+    <link rel="stylesheet" href="./styles.css?v=motion-24" />
+  </head>
+  <body class="case-page">
+    <header class="site-header">
+      <a class="brand" href="./index.html#top"><img width="36" height="36" decoding="async" src="./assets/profile-thumb.jpg?v=photo-20260603b" alt="Muhammed Shabeer TM" /><span>Muhammed Shabeer TM</span></a>
+                  <nav id="primary-nav" aria-label="Primary navigation">
+        <a href="./index.html#professional-projects">Work</a>
+        <a href="./about.html">About</a>
+        <a href="./method.html">Method</a>
+        <a href="./index.html#personal-projects">Personal</a>
+        <a href="./index.html#insights">Insights</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+      <a href="./index.html#professional-projects" class="mobile-nav-link">Work</a>
+      <a href="./about.html" class="mobile-nav-link">About</a>
+      <a href="./method.html" class="mobile-nav-link">Method</a>
+      <a href="./index.html#personal-projects" class="mobile-nav-link">Personal</a>
+      <a href="./index.html#insights" class="mobile-nav-link">Insights</a>
+    </nav>
+    <main>
+      <section class="hero section">
+        <a class="back-link" href="./index.html#insights">&larr; Back to home</a>
+        <p class="eyebrow">Flutter Engineering Field Guide</p>
+        <h1>Common Flutter build issues and how I resolve them</h1>
+        <p class="hero-lead">
+          A practical checklist for production Flutter delivery: iOS build failures, Android Gradle issues, Firebase
+          setup, signing, dependency conflicts, flavors, CI/CD, release-store blockers, and post-release debugging.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#ios">iOS issues</a>
+          <a class="button" href="#android">Android issues</a>
+          <a class="button" href="#possible-cases">Possible cases</a>
+          <a class="button" href="#release">Release issues</a>
+        </div>
+      </section>
+
+      <section class="section case-context">
+        <article><span>Scope</span><strong>Build, release, CI, Firebase, signing</strong></article>
+        <article><span>Platforms</span><strong>iOS, Android, Play Console, App Store</strong></article>
+        <article><span>Method</span><strong>Reproduce, isolate, fix, verify</strong></article>
+        <article><span>Goal</span><strong>Stable builds and predictable releases</strong></article>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Debugging Method</p>
+          <h2>Before changing code, I isolate whether the issue is Flutter, native platform, dependency, signing, or environment</h2>
+        </div>
+        <div class="method-grid">
+          <article><span>01</span><h3>Read the first real error</h3><p>Ignore long log noise and find the first failing task, Pod target, Gradle task, or native compiler message.</p></article>
+          <article><span>02</span><h3>Check environment</h3><p>Validate Flutter channel, Xcode, CocoaPods, JDK, Gradle, Android SDK, and local certificates before touching app code.</p></article>
+          <article><span>03</span><h3>Clean selectively</h3><p>Use targeted cleanups for Pods, Gradle, derived data, generated files, or build_runner instead of deleting everything blindly.</p></article>
+          <article><span>04</span><h3>Verify the release path</h3><p>Test debug, profile, release, flavor, signing, archive, upload, and store review constraints separately.</p></article>
+        </div>
+      </section>
+
+      <section id="possible-cases" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Possible Cases</p>
+          <h2>Real symptoms I check when a Flutter build, archive, upload, or production release fails</h2>
+        </div>
+        <div class="issue-grid">
+          <article class="issue-card"><span>Case 01 · iOS</span><h3>No profiles found for bundle identifier</h3><p><strong>Seen when:</strong> Xcode archive fails before signing.</p><p><strong>Check:</strong> bundle ID, Apple team, profile type, capabilities, and whether flavor bundle IDs have their own profiles.</p></article>
+          <article class="issue-card"><span>Case 02 · iOS</span><h3>Provisioning profile does not include entitlement</h3><p><strong>Seen when:</strong> push notification, associated domains, keychain, or Sign in with Apple is added.</p><p><strong>Check:</strong> Apple portal capability, regenerated profile, Runner.entitlements, and selected Xcode target.</p></article>
+          <article class="issue-card"><span>Case 03 · iOS</span><h3>Command PhaseScriptExecution failed</h3><p><strong>Seen when:</strong> Xcode build fails during Flutter, Crashlytics, or custom script phase.</p><p><strong>Check:</strong> script path, executable permission, Flutter root, build mode, dSYM script, and CI environment variables.</p></article>
+          <article class="issue-card"><span>Case 04 · iOS</span><h3>Module not found after pod install</h3><p><strong>Seen when:</strong> Swift import or plugin pod cannot be found.</p><p><strong>Check:</strong> open .xcworkspace, reinstall pods, target membership, Podfile platform, and DerivedData cache.</p></article>
+          <article class="issue-card"><span>Case 05 · iOS</span><h3>Firebase app not configured</h3><p><strong>Seen when:</strong> app starts then crashes or Firebase logs default app missing.</p><p><strong>Check:</strong> correct GoogleService-Info.plist, bundle ID match, target membership, and Firebase initialization order.</p></article>
+          <article class="issue-card"><span>Case 06 · iOS</span><h3>Build works on simulator but fails on real device</h3><p><strong>Seen when:</strong> native library, signing, or architecture support differs.</p><p><strong>Check:</strong> certificate/profile, device UDID for development profile, supported architectures, and device-only permissions.</p></article>
+          <article class="issue-card"><span>Case 07 · iOS</span><h3>Archive uploads but App Store rejects metadata</h3><p><strong>Seen when:</strong> Transporter/App Store Connect validation fails.</p><p><strong>Check:</strong> icons, launch storyboard, privacy strings, encryption answers, bundle version, build number, and privacy manifest requirements.</p></article>
+          <article class="issue-card"><span>Case 08 · iOS</span><h3>Push notification token is not generated</h3><p><strong>Seen when:</strong> FCM/APNs token is null or notifications never arrive.</p><p><strong>Check:</strong> APNs key/cert, push capability, notification permission, bundle ID, Firebase project, and background modes.</p></article>
+          <article class="issue-card"><span>Case 09 · iOS</span><h3>Sign in with Apple works in debug but fails in release</h3><p><strong>Seen when:</strong> auth callback or credential validation fails only after archive.</p><p><strong>Check:</strong> service ID/app ID, associated domain, redirect URL, entitlements, and backend Apple client configuration.</p></article>
+          <article class="issue-card"><span>Case 10 · iOS</span><h3>iOS app crashes after permission request</h3><p><strong>Seen when:</strong> camera, photos, location, Bluetooth, tracking, or contacts prompt is triggered.</p><p><strong>Check:</strong> Info.plist usage key exists and message explains the permission clearly.</p></article>
+          <article class="issue-card"><span>Case 11 · Android</span><h3>Execution failed for task :app:compileFlutterBuildRelease</h3><p><strong>Seen when:</strong> release build fails before native packaging.</p><p><strong>Check:</strong> Dart compile errors, missing dart-defines, generated code, assets, obfuscation flags, and flavor entrypoint.</p></article>
+          <article class="issue-card"><span>Case 12 · Android</span><h3>Execution failed for task :app:processReleaseGoogleServices</h3><p><strong>Seen when:</strong> Firebase Gradle processing fails.</p><p><strong>Check:</strong> google-services.json location, package_name, applicationIdSuffix, flavor folder, and google-services plugin.</p></article>
+          <article class="issue-card"><span>Case 13 · Android</span><h3>Manifest merger failed: android:exported missing</h3><p><strong>Seen when:</strong> target SDK 31+ and activities/services/receivers have intent filters.</p><p><strong>Check:</strong> add android:exported true/false intentionally in app or update the old plugin causing it.</p></article>
+          <article class="issue-card"><span>Case 14 · Android</span><h3>Duplicate class found</h3><p><strong>Seen when:</strong> two dependencies ship the same class or old support libraries conflict with AndroidX.</p><p><strong>Check:</strong> dependency tree, exclude duplicate transitive dependency, migrate to AndroidX, and align versions.</p></article>
+          <article class="issue-card"><span>Case 15 · Android</span><h3>Could not find method namespace</h3><p><strong>Seen when:</strong> project/plugin Gradle version is too old for the syntax being used.</p><p><strong>Check:</strong> Android Gradle Plugin version, Gradle wrapper version, and plugin compatibility.</p></article>
+          <article class="issue-card"><span>Case 16 · Android</span><h3>Namespace not specified</h3><p><strong>Seen when:</strong> upgrading to newer Android Gradle Plugin.</p><p><strong>Check:</strong> namespace in android/app/build.gradle and old plugins that need updates.</p></article>
+          <article class="issue-card"><span>Case 17 · Android</span><h3>minSdk version is lower than plugin requirement</h3><p><strong>Seen when:</strong> Firebase, auth, payment, map, or media plugins require a higher minSdk.</p><p><strong>Check:</strong> plugin docs, business device support needs, and raise minSdk only after impact review.</p></article>
+          <article class="issue-card"><span>Case 18 · Android</span><h3>R8 missing class or NoSuchMethodError in release</h3><p><strong>Seen when:</strong> debug works but release crashes immediately or specific SDK fails.</p><p><strong>Check:</strong> proguard keep rules, reflection-based SDKs, JSON serialization, and Crashlytics release stack trace.</p></article>
+          <article class="issue-card"><span>Case 19 · Android</span><h3>Keystore password was incorrect</h3><p><strong>Seen when:</strong> release signing task fails.</p><p><strong>Check:</strong> store password, key password, alias, key.properties path, CI secret encoding, and signingReport.</p></article>
+          <article class="issue-card"><span>Case 20 · Android</span><h3>Play Console says app signed with wrong key</h3><p><strong>Seen when:</strong> AAB upload is rejected.</p><p><strong>Check:</strong> upload key certificate, app signing enrollment, debug vs release key, and flavor signing config.</p></article>
+          <article class="issue-card"><span>Case 21 · Android</span><h3>INSTALL_FAILED_VERSION_DOWNGRADE</h3><p><strong>Seen when:</strong> installing local build over a higher version already on device.</p><p><strong>Check:</strong> uninstall app, increase versionCode, or install matching build track.</p></article>
+          <article class="issue-card"><span>Case 22 · Android</span><h3>App not installed because package conflicts</h3><p><strong>Seen when:</strong> debug/release/flavor package name collides with existing app.</p><p><strong>Check:</strong> applicationId, applicationIdSuffix, signing certificate, and installed package on the device.</p></article>
+          <article class="issue-card"><span>Case 23 · Android</span><h3>Cleartext HTTP traffic not permitted</h3><p><strong>Seen when:</strong> API works locally but fails on Android device.</p><p><strong>Check:</strong> use HTTPS, or add a narrow network security config only for allowed debug/internal endpoints.</p></article>
+          <article class="issue-card"><span>Case 24 · Android</span><h3>Notification permission issue on Android 13+</h3><p><strong>Seen when:</strong> notifications work on old devices but not newer ones.</p><p><strong>Check:</strong> POST_NOTIFICATIONS runtime permission, channel creation, FCM token, and user permission state.</p></article>
+          <article class="issue-card"><span>Case 25 · Flutter</span><h3>Hot reload works but fresh install fails</h3><p><strong>Seen when:</strong> state survives during dev but initialization breaks on cold start.</p><p><strong>Check:</strong> startup order, async initialization, Firebase init, dependency injection, secure storage, and routing guards.</p></article>
+          <article class="issue-card"><span>Case 26 · Flutter</span><h3>White screen after splash</h3><p><strong>Seen when:</strong> app opens but no UI appears.</p><p><strong>Check:</strong> uncaught async errors, initial route, missing env config, release-only API failure, and Crashlytics logs.</p></article>
+          <article class="issue-card"><span>Case 27 · Flutter</span><h3>Unable to load asset</h3><p><strong>Seen when:</strong> image/font/json works in one place but not on another machine or release.</p><p><strong>Check:</strong> pubspec indentation, exact case-sensitive path, asset folder inclusion, and generated asset references.</p></article>
+          <article class="issue-card"><span>Case 28 · Flutter</span><h3>Generated file missing</h3><p><strong>Seen when:</strong> freezed, json_serializable, retrofit, injectable, router, or l10n classes cannot be found.</p><p><strong>Check:</strong> run build_runner/gen-l10n, resolve generator errors first, and commit generated files if project policy requires it.</p></article>
+          <article class="issue-card"><span>Case 29 · Flutter</span><h3>Dependency override fixes one plugin and breaks another</h3><p><strong>Seen when:</strong> pub get passes but runtime/build breaks later.</p><p><strong>Check:</strong> remove broad overrides, inspect dependency graph, upgrade compatible package groups together.</p></article>
+          <article class="issue-card"><span>Case 30 · Flutter</span><h3>Flavor builds call wrong API</h3><p><strong>Seen when:</strong> staging build points to production or production points to staging.</p><p><strong>Check:</strong> dart-define values, flavor entrypoints, CI variables, native app IDs, and runtime environment banner/logs.</p></article>
+          <article class="issue-card"><span>Case 31 · Firebase</span><h3>Analytics events missing in dashboard</h3><p><strong>Seen when:</strong> app logs events but Firebase does not show them quickly.</p><p><strong>Check:</strong> DebugView, correct Firebase app, analytics collection settings, event names, consent state, and release build config.</p></article>
+          <article class="issue-card"><span>Case 32 · Firebase</span><h3>Crashlytics not receiving crashes</h3><p><strong>Seen when:</strong> test crash happens but dashboard stays empty.</p><p><strong>Check:</strong> Crashlytics collection enabled, Firebase app config, mapping/dSYM upload, and whether crash is fatal or caught.</p></article>
+          <article class="issue-card"><span>Case 33 · IAP</span><h3>Product not found</h3><p><strong>Seen when:</strong> store returns empty product list.</p><p><strong>Check:</strong> product ID spelling, app bundle/package, product status, signed build, tester account, store country, and review status.</p></article>
+          <article class="issue-card"><span>Case 34 · IAP</span><h3>Purchase success but premium not unlocked</h3><p><strong>Seen when:</strong> payment completes but app state does not update.</p><p><strong>Check:</strong> transaction listener, backend validation, restore flow, user identity mapping, and race between login and store account.</p></article>
+          <article class="issue-card"><span>Case 35 · CI/CD</span><h3>Build passes locally but fails in CI</h3><p><strong>Seen when:</strong> CI lacks local setup files or uses different tool versions.</p><p><strong>Check:</strong> Flutter version, JDK, Xcode, CocoaPods, generated files, Firebase files, signing secrets, and cache keys.</p></article>
+          <article class="issue-card"><span>Case 36 · CI/CD</span><h3>CI build is green but uploaded build is wrong</h3><p><strong>Seen when:</strong> store receives wrong flavor, icon, name, API, or version.</p><p><strong>Check:</strong> build matrix, lane/script parameters, artifact names, versionCode/build number, and release notes target.</p></article>
+          <article class="issue-card"><span>Case 37 · Store</span><h3>Play Console data safety mismatch</h3><p><strong>Seen when:</strong> release is blocked or rejected for privacy declarations.</p><p><strong>Check:</strong> analytics, crash reporting, login, location, contacts, payments, data sharing, and SDK privacy behavior.</p></article>
+          <article class="issue-card"><span>Case 38 · Store</span><h3>App Store asks for demo credentials</h3><p><strong>Seen when:</strong> app has login-gated features.</p><p><strong>Check:</strong> provide working reviewer login, explain paid flows, include test subscription info if needed, and keep backend test data ready.</p></article>
+          <article class="issue-card"><span>Case 39 · Store</span><h3>Release rejected for background behavior</h3><p><strong>Seen when:</strong> VPN, location, notifications, or background fetch is not justified.</p><p><strong>Check:</strong> permission purpose, user-facing explanation, policy compliance, and whether background mode is actually necessary.</p></article>
+          <article class="issue-card"><span>Case 40 · Production</span><h3>Only some users see crashes after release</h3><p><strong>Seen when:</strong> issue depends on OS version, device model, locale, account state, or network.</p><p><strong>Check:</strong> Crashlytics filters, custom keys, app version, device/OS segmentation, logs, and rollout percentage.</p></article>
+          <article class="issue-card"><span>Case 41 · Production</span><h3>ANRs increase after new release</h3><p><strong>Seen when:</strong> Play Console reports input dispatching timeout or main-thread blocking.</p><p><strong>Check:</strong> startup work, database calls, JSON parsing, sync loops, image processing, and platform channel calls on UI thread.</p></article>
+          <article class="issue-card"><span>Case 42 · Production</span><h3>Login loop after update</h3><p><strong>Seen when:</strong> users return to login repeatedly after installing a new version.</p><p><strong>Check:</strong> token migration, secure storage keys, refresh endpoint, auth guard, app version migration, and clock skew.</p></article>
+          <article class="issue-card"><span>Case 43 · Android Maps</span><h3>App crashes on screens using Google Maps</h3><p><strong>Seen when:</strong> the app opens normally, but crashes when a map widget or location/map screen loads.</p><p><strong>Check:</strong> google_maps_flutter version, native Google Maps SDK version, Android Gradle/plugin compatibility, Play Services versions, and Crashlytics native stack trace. If the crash starts after a package upgrade, downgrade Google Maps/related Play Services packages to a stable compatible version and retest on real Android devices.</p></article>
+          <article class="issue-card"><span>Case 44 · iOS Archive</span><h3>Xcode refuses to build even when configuration looks correct</h3><p><strong>Seen when:</strong> signing, pods, bundle ID, and capabilities look right, but Xcode build keeps failing because of Xcode-version/tooling behavior.</p><p><strong>Check:</strong> after trying the normal fixes, build the iOS target through Android Studio/Flutter tooling first, then return to Xcode and archive the already-prepared project. This can bypass some Xcode-only build-state issues while still using Xcode for final archive/export.</p></article>
+        </div>
+      </section>
+
+      <section id="ios" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">iOS Build Issues</p>
+          <h2>Common iOS failures from CocoaPods, Xcode, signing, Firebase, plugins, and App Store delivery</h2>
+        </div>
+        <div class="issue-grid">
+          <article class="issue-card"><span>CocoaPods</span><h3>Pod install fails</h3><p><strong>Cause:</strong> stale Podfile.lock, repo cache, Ruby/CocoaPods mismatch, or plugin podspec conflict.</p><p><strong>Fix:</strong> update CocoaPods, run pod repo update when needed, remove Pods/Podfile.lock carefully, then reinstall from the ios folder.</p></article>
+          <article class="issue-card"><span>CocoaPods</span><h3>Minimum iOS deployment target mismatch</h3><p><strong>Cause:</strong> a plugin requires a newer iOS target than the app.</p><p><strong>Fix:</strong> update platform target in Podfile and Xcode deployment settings, then reinstall pods and rebuild.</p></article>
+          <article class="issue-card"><span>Xcode</span><h3>Runner.xcworkspace not used</h3><p><strong>Cause:</strong> opening Runner.xcodeproj skips Pods integration.</p><p><strong>Fix:</strong> open Runner.xcworkspace for native iOS work and archive builds.</p></article>
+          <article class="issue-card"><span>Signing</span><h3>Provisioning profile does not match bundle ID</h3><p><strong>Cause:</strong> wrong app identifier, flavor bundle ID, team, or profile.</p><p><strong>Fix:</strong> align Bundle Identifier, Team, capabilities, provisioning profile, and export options.</p></article>
+          <article class="issue-card"><span>Signing</span><h3>Certificate expired or missing private key</h3><p><strong>Cause:</strong> certificate exists in Apple account but private key is missing locally or in CI.</p><p><strong>Fix:</strong> import the correct .p12, recreate certificate if needed, and sync CI keychain securely.</p></article>
+          <article class="issue-card"><span>Capabilities</span><h3>Push, Sign in with Apple, Associated Domains fail</h3><p><strong>Cause:</strong> capability enabled in code but not in Apple Developer profile or Xcode target.</p><p><strong>Fix:</strong> enable capability in Apple portal, regenerate profiles, and verify entitlements file.</p></article>
+          <article class="issue-card"><span>Firebase</span><h3>GoogleService-Info.plist not found</h3><p><strong>Cause:</strong> missing file, wrong target membership, wrong flavor file, or incorrect bundle ID.</p><p><strong>Fix:</strong> add the correct plist per flavor, enable target membership, and verify Firebase iOS app ID.</p></article>
+          <article class="issue-card"><span>Firebase</span><h3>Crashlytics dSYM upload missing</h3><p><strong>Cause:</strong> dSYMs not generated or upload script not configured for archive.</p><p><strong>Fix:</strong> enable debug symbols, verify Crashlytics run script, and upload dSYMs for release builds.</p></article>
+          <article class="issue-card"><span>Plugins</span><h3>MissingPluginException on iOS</h3><p><strong>Cause:</strong> plugin not registered, app not fully restarted, custom engine setup, or platform code not included.</p><p><strong>Fix:</strong> stop app fully, run pub get, rebuild, verify GeneratedPluginRegistrant, and check plugin target setup.</p></article>
+          <article class="issue-card"><span>Swift</span><h3>Swift module or bridging header error</h3><p><strong>Cause:</strong> mixed Swift/Objective-C config, missing Swift version, or plugin native code mismatch.</p><p><strong>Fix:</strong> set Swift version, ensure bridging header references are valid, and clean DerivedData if Xcode caches stale modules.</p></article>
+          <article class="issue-card"><span>Simulator</span><h3>arm64 simulator architecture issue</h3><p><strong>Cause:</strong> older pods/plugins do not support Apple Silicon simulator architecture cleanly.</p><p><strong>Fix:</strong> update dependencies first; only use excluded architectures as a last resort for simulator builds.</p></article>
+          <article class="issue-card"><span>Permissions</span><h3>App crashes when requesting camera, photo, location, or tracking</h3><p><strong>Cause:</strong> missing Info.plist usage description.</p><p><strong>Fix:</strong> add precise NSCameraUsageDescription, NSPhotoLibraryUsageDescription, NSLocationWhenInUseUsageDescription, or tracking strings.</p></article>
+          <article class="issue-card"><span>Networking</span><h3>API works on Android but fails on iOS</h3><p><strong>Cause:</strong> App Transport Security blocks insecure HTTP or invalid TLS.</p><p><strong>Fix:</strong> use HTTPS with valid certificates; add narrow ATS exceptions only when unavoidable.</p></article>
+          <article class="issue-card"><span>Archive</span><h3>Debug works, archive fails</h3><p><strong>Cause:</strong> release-only optimization, signing, bitcode-era settings, missing symbols, or script phase issue.</p><p><strong>Fix:</strong> build release locally, inspect archive log, verify signing/export method, and check build phases.</p></article>
+          <article class="issue-card"><span>App Store</span><h3>Invalid bundle, icons, privacy, or export compliance</h3><p><strong>Cause:</strong> missing icon sizes, privacy manifest issues, encryption answers, or bundle metadata mismatch.</p><p><strong>Fix:</strong> validate archive in Organizer, fix asset catalog, privacy strings, and App Store Connect metadata before upload.</p></article>
+        </div>
+      </section>
+
+      <section id="android" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Android Build Issues</p>
+          <h2>Common Android failures from Gradle, Kotlin, SDK levels, signing, R8, manifests, and Play Console rules</h2>
+        </div>
+        <div class="issue-grid">
+          <article class="issue-card"><span>Gradle</span><h3>Gradle plugin and wrapper mismatch</h3><p><strong>Cause:</strong> Android Gradle Plugin, Gradle wrapper, Kotlin, or JDK versions are incompatible.</p><p><strong>Fix:</strong> align AGP, Gradle, Kotlin, Java version, and Flutter template expectations before upgrading more packages.</p></article>
+          <article class="issue-card"><span>SDK</span><h3>compileSdk or targetSdk too low</h3><p><strong>Cause:</strong> plugin or Play Console requires newer SDK levels.</p><p><strong>Fix:</strong> update compileSdk/targetSdk, install SDK platform/build tools, and resolve new permission behavior.</p></article>
+          <article class="issue-card"><span>Namespace</span><h3>Namespace not specified</h3><p><strong>Cause:</strong> newer Android Gradle Plugin requires namespace in module build.gradle.</p><p><strong>Fix:</strong> add namespace matching applicationId/package and update old plugins where possible.</p></article>
+          <article class="issue-card"><span>Kotlin</span><h3>Kotlin metadata version error</h3><p><strong>Cause:</strong> plugin compiled with a newer Kotlin version than project uses.</p><p><strong>Fix:</strong> align Kotlin plugin version with dependency requirements and Flutter compatibility.</p></article>
+          <article class="issue-card"><span>Java</span><h3>Unsupported class file major version</h3><p><strong>Cause:</strong> wrong JDK for Gradle/AGP version.</p><p><strong>Fix:</strong> use the JDK version expected by the Android Gradle Plugin and configure JAVA_HOME/IDE Gradle JDK.</p></article>
+          <article class="issue-card"><span>Manifest</span><h3>Manifest merger failed</h3><p><strong>Cause:</strong> conflicting permissions, activities, providers, exported flags, or authorities from plugins.</p><p><strong>Fix:</strong> inspect merged manifest report, add exported flags, resolve provider authorities, and use tools:replace only when justified.</p></article>
+          <article class="issue-card"><span>Firebase</span><h3>google-services.json mismatch</h3><p><strong>Cause:</strong> package name or flavor applicationId does not match Firebase Android app.</p><p><strong>Fix:</strong> place the correct google-services.json per flavor/source set and verify applicationId.</p></article>
+          <article class="issue-card"><span>Firebase</span><h3>Google services plugin not applied</h3><p><strong>Cause:</strong> Firebase config file exists but Gradle plugin is missing or in wrong file.</p><p><strong>Fix:</strong> apply com.google.gms.google-services in the app module and keep dependency versions aligned.</p></article>
+          <article class="issue-card"><span>R8</span><h3>Release build crashes but debug works</h3><p><strong>Cause:</strong> R8/proguard strips classes used by reflection, SDKs, serialization, or platform channels.</p><p><strong>Fix:</strong> add minimal keep rules, test release builds locally, and check Crashlytics stack traces.</p></article>
+          <article class="issue-card"><span>Multidex</span><h3>Dex method limit exceeded</h3><p><strong>Cause:</strong> large dependency graph, Firebase modules, ad SDKs, or old minSdk constraints.</p><p><strong>Fix:</strong> enable multidex if needed, remove unused SDKs, and review dependency bloat.</p></article>
+          <article class="issue-card"><span>Signing</span><h3>Keystore was tampered with or password incorrect</h3><p><strong>Cause:</strong> wrong keystore, alias, key password, or store password in key.properties/CI secret.</p><p><strong>Fix:</strong> verify keystore alias and secrets, never regenerate a release key unless Play App Signing recovery is planned.</p></article>
+          <article class="issue-card"><span>Signing</span><h3>Upload key rejected by Play Console</h3><p><strong>Cause:</strong> APK/AAB signed with the wrong key.</p><p><strong>Fix:</strong> use the registered upload key, check signingReport, and keep debug/release/flavor signing separated.</p></article>
+          <article class="issue-card"><span>Resources</span><h3>Duplicate resource or asset conflict</h3><p><strong>Cause:</strong> plugin resources, launcher icons, localization files, or generated assets collide.</p><p><strong>Fix:</strong> inspect the duplicate path, rename resources, regenerate icons, and avoid copying assets into native folders unnecessarily.</p></article>
+          <article class="issue-card"><span>Native libs</span><h3>Missing native library for ABI</h3><p><strong>Cause:</strong> plugin ships only some architectures or ABI filters exclude required libraries.</p><p><strong>Fix:</strong> check jniLibs/ABI filters, include required ABIs, and test on real devices.</p></article>
+          <article class="issue-card"><span>Play Store</span><h3>AAB upload blocked by target SDK, permissions, or policy</h3><p><strong>Cause:</strong> Play Console requires updated target SDK, permission declarations, data safety, or policy forms.</p><p><strong>Fix:</strong> update target SDK, audit permissions, complete Play Console declarations, and test release builds before upload.</p></article>
+        </div>
+      </section>
+
+      <section id="release" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Flutter, Firebase, CI & Release</p>
+          <h2>Cross-platform issues that usually appear around dependencies, flavors, generated code, and release automation</h2>
+        </div>
+        <div class="issue-grid">
+          <article class="issue-card"><span>Flutter</span><h3>pub get dependency solving failed</h3><p><strong>Cause:</strong> SDK constraints, transitive package conflicts, or old pinned versions.</p><p><strong>Fix:</strong> inspect dependency tree, upgrade packages in small batches, and avoid random dependency_overrides in production.</p></article>
+          <article class="issue-card"><span>Generated Code</span><h3>build_runner conflicts or stale files</h3><p><strong>Cause:</strong> generated files out of sync with models, freezed/json_serializable/router changes.</p><p><strong>Fix:</strong> run build_runner with delete-conflicting-outputs and commit generated files consistently if the project expects them.</p></article>
+          <article class="issue-card"><span>Assets</span><h3>Unable to load asset</h3><p><strong>Cause:</strong> pubspec indentation, wrong path, case-sensitive filename, or asset missing from bundle.</p><p><strong>Fix:</strong> fix pubspec assets, run pub get, verify exact filename casing, and test on device.</p></article>
+          <article class="issue-card"><span>Localization</span><h3>Missing generated l10n classes</h3><p><strong>Cause:</strong> ARB syntax error, l10n config issue, or generated files not refreshed.</p><p><strong>Fix:</strong> validate ARB files, run flutter gen-l10n, and keep localization keys consistent.</p></article>
+          <article class="issue-card"><span>Flavors</span><h3>Wrong API, Firebase app, icon, or app name in flavor</h3><p><strong>Cause:</strong> flavor configs not separated across Dart defines, native bundle IDs, Firebase files, and signing.</p><p><strong>Fix:</strong> create a flavor matrix and verify each appId/bundleId, Firebase file, entrypoint, icon, name, and signing config.</p></article>
+          <article class="issue-card"><span>Environment</span><h3>Works on one machine, fails on another</h3><p><strong>Cause:</strong> different Flutter channel, Xcode, JDK, SDK, CocoaPods, or cached generated files.</p><p><strong>Fix:</strong> document tool versions, run doctor, pin CI versions, and avoid relying on local-only files.</p></article>
+          <article class="issue-card"><span>CI/CD</span><h3>CI cannot sign iOS build</h3><p><strong>Cause:</strong> certificates, profiles, keychain, or App Store Connect API key missing in CI.</p><p><strong>Fix:</strong> configure secure certificate import, profiles, keychain unlock, export options, and API key access.</p></article>
+          <article class="issue-card"><span>CI/CD</span><h3>CI cannot sign Android release</h3><p><strong>Cause:</strong> keystore or key.properties not available in CI secrets.</p><p><strong>Fix:</strong> inject keystore securely, decode it during CI, and verify signingReport before upload.</p></article>
+          <article class="issue-card"><span>Crashlytics</span><h3>Stack traces are obfuscated or unreadable</h3><p><strong>Cause:</strong> missing mapping files or dSYMs for release builds.</p><p><strong>Fix:</strong> upload Android mapping files and iOS dSYMs for every release build.</p></article>
+          <article class="issue-card"><span>IAP</span><h3>Purchases work in sandbox but fail in production</h3><p><strong>Cause:</strong> product IDs, store configuration, tester accounts, backend validation, or release status mismatch.</p><p><strong>Fix:</strong> verify product IDs on both stores, test signed release builds, and validate receipts/transactions server-side.</p></article>
+          <article class="issue-card"><span>Platform Channel</span><h3>Native callback works only after full restart</h3><p><strong>Cause:</strong> hot reload does not re-register native code or plugin setup.</p><p><strong>Fix:</strong> stop app fully after native changes and rebuild from clean state when touching platform code.</p></article>
+          <article class="issue-card"><span>Release QA</span><h3>Debug build is fine, release has blank screen</h3><p><strong>Cause:</strong> missing permissions, R8 stripping, asset issue, environment variable missing, or release-only API endpoint.</p><p><strong>Fix:</strong> always test release/profile builds on real devices with production-like config before store upload.</p></article>
+          <article class="issue-card"><span>Performance</span><h3>Jank after release</h3><p><strong>Cause:</strong> heavy work on UI isolate, large images, shader compilation, excessive rebuilds, or slow startup initialization.</p><p><strong>Fix:</strong> profile in release/profile mode, optimize images, reduce rebuilds, defer startup work, and inspect frame timing.</p></article>
+          <article class="issue-card"><span>Networking</span><h3>API fails only in release</h3><p><strong>Cause:</strong> wrong base URL, missing certificate config, Android network security config, ATS, or environment define.</p><p><strong>Fix:</strong> verify release dart-defines, network security files, ATS, and server TLS chain.</p></article>
+          <article class="issue-card"><span>Store Review</span><h3>Review rejection for privacy or permissions</h3><p><strong>Cause:</strong> requesting sensitive permissions without clear purpose or mismatched privacy declarations.</p><p><strong>Fix:</strong> remove unused permissions, explain required access in-app, and align App Store/Play data safety forms.</p></article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="case-narrative">
+          <p>
+            My approach is simple: reproduce the issue, isolate the layer, fix the smallest responsible cause, then verify
+            on the same build path the user or store will receive. Flutter production work is rarely just Dart code; stable
+            delivery depends on native build systems, store rules, signing, analytics, crash visibility, and release discipline.
+          </p>
+          <div class="case-stack">
+            <span>Flutter doctor</span><span>Xcode</span><span>CocoaPods</span><span>Gradle</span><span>Kotlin</span><span>JDK</span><span>Firebase</span><span>Crashlytics</span><span>CI/CD</span><span>Play Console</span><span>App Store Connect</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact-section">
+        <p class="eyebrow">Contact</p>
+        <h2>Ready to discuss senior Flutter, mobile architecture, or product engineering roles</h2>
+        <p class="contact-links">
+          <span>Email: <a href="mailto:muhmmdshabeer@gmail.com">muhmmdshabeer@gmail.com</a></span>
+          <span class="contact-sep">&nbsp;·&nbsp;</span>
+          <span>Phone: <a href="tel:+919567200188">+91 95672 00188</a></span>
+        </p>
+        <div class="hero-actions center">
+          <a class="button primary" href="mailto:muhmmdshabeer@gmail.com">Email Me</a>
+          <a class="button" href="https://linkedin.com/in/muhammed-shabeer-tm-55271018b" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="button" href="https://github.com/meahdev" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="button" href="https://medium.com/@muhmmdshabeer" target="_blank" rel="noreferrer">Medium</a>
+        </div>
+      </section>
+    </main>
+    <script src="./site.js?v=motion-22" defer></script>
+  </body>
+</html>

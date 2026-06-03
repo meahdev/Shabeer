@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Product method and Flutter production toolchain — Muhammed Shabeer TM." />
+    <title>Product Method & Tools | Muhammed Shabeer TM</title>
+    <link rel="stylesheet" href="./styles.css?v=motion-24" />
+  </head>
+  <body class="case-page">
+    <header class="site-header">
+      <a class="brand" href="./index.html#top">
+        <img width="36" height="36" decoding="async" src="./assets/profile-thumb.jpg?v=photo-20260603b" alt="Muhammed Shabeer TM" />
+        <span>Muhammed Shabeer TM</span>
+      </a>
+      <nav id="primary-nav" aria-label="Primary navigation">
+        <a href="./index.html#professional-projects">Work</a>
+        <a href="./about.html">About</a>
+        <a href="./method.html">Method</a>
+        <a href="./index.html#personal-projects">Personal</a>
+        <a href="./index.html#insights">Insights</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+      <a href="./index.html#professional-projects" class="mobile-nav-link">Work</a>
+      <a href="./about.html" class="mobile-nav-link">About</a>
+      <a href="./method.html" class="mobile-nav-link">Method</a>
+      <a href="./index.html#personal-projects" class="mobile-nav-link">Personal</a>
+      <a href="./index.html#insights" class="mobile-nav-link">Insights</a>
+    </nav>
+    <main>
+      <section class="hero section">
+        <a class="back-link" href="./index.html#method">&larr; Back to home</a>
+        <p class="eyebrow">Product Method</p>
+        <h1>How I turn unstable app behavior into reliable product experiences</h1>
+        <p class="hero-lead">
+          A four-step loop for Flutter production work — from crash signals and store feedback through architecture,
+          shipping, and measurement.
+        </p>
+        <a class="button primary" href="./index.html#method">Back to portfolio</a>
+      </section>
+      <!-- Section 1: Toolchain -->
+      <section class="section method-section">
+        <div class="method-section-inner">
+          <div class="section-heading">
+            <p class="eyebrow">Production Toolchain</p>
+            <h2>The Flutter stack I use to build, scale, and monitor apps</h2>
+          </div>
+          <div class="toolchain-grid">
+            <article class="toolchain-card">
+              <h3>Architecture & State</h3>
+              <p>Flutter, Dart, BLoC/Cubit, Riverpod, clean layered packages (Dio, Freezed, Isar/Hive).</p>
+            </article>
+            <article class="toolchain-card">
+              <h3>CI/CD & Automation</h3>
+              <p>Fastlane, GitHub Actions, TestFlight, Google Play Console release pipelines, and secure code signing configurations.</p>
+            </article>
+            <article class="toolchain-card">
+              <h3>Telemetry & Quality</h3>
+              <p>Firebase Crashlytics, Sentry, local storage caching, memory leak profiling, and device telemetry checks.</p>
+            </article>
+            <article class="toolchain-card">
+              <h3>Analytics & Growth</h3>
+              <p>Firebase Analytics, Mixpanel custom events, Google Play / App Store release tracks, and App Store Optimization (ASO) audits.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Execution -->
+      <section class="section method-section">
+        <div class="method-section-inner">
+          <div class="section-heading">
+            <p class="eyebrow">Execution Standards</p>
+            <h2>How I run projects from diagnostics to post-release monitoring</h2>
+          </div>
+          <div class="execution-list">
+            <article class="execution-step">
+              <div class="step-num">01</div>
+              <div class="step-copy">
+                <h3>Investigate & Audit</h3>
+                <p>No code is written before understanding what is failing in production. I trace user complaints and app store reviews back to telemetry signals and analytics funnels. This identifies launch bottlenecks, networking failures on poor connections, and high-impact crash trends.</p>
+                <ul>
+                  <li><strong>Active Diagnostics:</strong> Correlating user session logs with Firebase Crashlytics and Sentry telemetry to isolate reproduction steps.</li>
+                  <li><strong>Funnel Analysis:</strong> Auditing onboarding and payment screens to see exactly where users abandon the flow.</li>
+                  <li><strong>Memory & Resource Profiling:</strong> Using Dart DevTools to analyze memory footprints, identify memory leaks (e.g., unclosed Streams/ChangeNotifiers), and profile CPU usage during intensive UI rendering.</li>
+                  <li><strong>App Store Feedback Loops:</strong> Actively monitoring Apple App Store Connect and Google Play Console reviews to link subjective user feedback with backend trace IDs.</li>
+                  <li><strong>Network Telemetry Audits:</strong> Simulating offline modes, high-latency networks, and poor bandwidth constraints (e.g., 3G profiling) to evaluate API error-handling strategies.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="execution-step">
+              <div class="step-num">02</div>
+              <div class="step-copy">
+                <h3>Layered Architecture</h3>
+                <p>I structure Flutter codebases using Clean Architecture principles to keep files maintainable and separate concerns. By isolating the UI from state management and network libraries, features can be tested, refactored, and extended without side effects.</p>
+                <ul>
+                  <li><strong>Presentation Layer:</strong> Passive UI widgets driven by predictable BLoC/Cubit or Riverpod states, keeping the view entirely decoupled from business logic.</li>
+                  <li><strong>Domain Layer:</strong> Pure Dart business logic containing use cases, business entities, and repository contracts, guaranteeing no UI or framework dependencies.</li>
+                  <li><strong>Data Layer:</strong> Coordinating network API requests (Dio), local cache databases (Isar/Hive), and native platform channel integrations.</li>
+                  <li><strong>Unidirectional Data Flow:</strong> Defining strict state contracts and immutable classes using packages like Freezed to prevent unpredictable UI state mutations.</li>
+                  <li><strong>Dependency Injection (DI):</strong> Clean registration and lookup of services, repositories, and BLoCs using packages like GetIt or native Riverpod provider scopes.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="execution-step">
+              <div class="step-num">03</div>
+              <div class="step-copy">
+                <h3>Automated Release Discipline</h3>
+                <p>Deployments must be automated and safe. I set up script-based build pipelines that take care of testing, certificates, and app store updates, removing manual error from release cycles.</p>
+                <ul>
+                  <li><strong>CI/CD Scripting:</strong> GitHub Actions and Fastlane configurations to build and code-sign iOS/Android apps automatically on merge.</li>
+                  <li><strong>Critical Operations:</strong> Writing robust client-side validation for subscriptions and In-App Purchases (IAP) tied to secure backend receipt verification.</li>
+                  <li><strong>Credentials & Code Signing:</strong> Managing iOS distribution profiles and signing certificates securely utilizing Fastlane Match and Google Play credentials API.</li>
+                  <li><strong>Multi-Flavor Environments:</strong> Structuring Flutter build flavors (dev, staging, prod) to isolate API endpoints, Firebase projects, app icons, and bundle IDs.</li>
+                  <li><strong>Pre-Release Verification:</strong> Running automated lint checkers (flutter_lints), unit test suites, and integration tests before generating deployment-ready artifacts.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="execution-step">
+              <div class="step-num">04</div>
+              <div class="step-copy">
+                <h3>Post-Release Measurement</h3>
+                <p>Shipping is only the beginning. I monitor post-release app performance, crash rates, and conversion indexes to ensure stability and gather insights for the next iteration cycle.</p>
+                <ul>
+                  <li><strong>Stability Index:</strong> Monitoring crash-free user sessions and memory consumption across active app versions.</li>
+                  <li><strong>Growth Feedback:</strong> Analyzing custom analytics events (Firebase Analytics, Mixpanel) to provide data-backed backlogs for product managers.</li>
+                  <li><strong>Performance Vitals:</strong> Telemetry tracking of app startup time, HTTP request latencies, and rendering performance (jank/dropped frames) via Firebase Performance.</li>
+                  <li><strong>Controlled Rollouts & Feature Flags:</strong> Using Remote Config to toggle features dynamically or perform A/B testing on UI components to test conversion rates.</li>
+                  <li><strong>Incident Retrospectives:</strong> Reviewing post-release telemetry anomalies and documenting root cause analysis to continuously harden dev and testing guardrails.</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact-section">
+        <p class="eyebrow">Contact</p>
+        <h2>Ready to discuss senior Flutter, mobile architecture, or product engineering roles</h2>
+        <p class="contact-links">
+          <span>Email: <a href="mailto:muhmmdshabeer@gmail.com">muhmmdshabeer@gmail.com</a></span>
+          <span class="contact-sep">&nbsp;·&nbsp;</span>
+          <span>Phone: <a href="tel:+919567200188">+91 95672 00188</a></span>
+        </p>
+        <div class="hero-actions center">
+          <a class="button primary" href="mailto:muhmmdshabeer@gmail.com">Email Me</a>
+          <a class="button" href="https://linkedin.com/in/muhammed-shabeer-tm-55271018b" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="button" href="https://github.com/meahdev" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="button" href="https://medium.com/@muhmmdshabeer" target="_blank" rel="noreferrer">Medium</a>
+        </div>
+      </section>
+    </main>
+    <script src="./site.js?v=motion-22" defer></script>
+  </body>
+</html>

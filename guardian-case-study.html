@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HEROIC Guardian Case Study | Muhammed Shabeer TM</title>
+    <link rel="stylesheet" href="./styles.css?v=motion-24" />
+  </head>
+  <body class="case-page">
+    <header class="site-header">
+      <a class="brand" href="./index.html#top">
+        <img width="36" height="36" decoding="async" src="./assets/profile-thumb.jpg?v=photo-20260603b" alt="Muhammed Shabeer TM" />
+        <span>Muhammed Shabeer TM</span>
+      </a>
+                  <nav id="primary-nav" aria-label="Primary navigation">
+        <a href="./index.html#professional-projects">Work</a>
+        <a href="./about.html">About</a>
+        <a href="./method.html">Method</a>
+        <a href="./index.html#personal-projects">Personal</a>
+        <a href="./index.html#insights">Insights</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+      <a href="./index.html#professional-projects" class="mobile-nav-link">Work</a>
+      <a href="./about.html" class="mobile-nav-link">About</a>
+      <a href="./method.html" class="mobile-nav-link">Method</a>
+      <a href="./index.html#personal-projects" class="mobile-nav-link">Personal</a>
+      <a href="./index.html#insights" class="mobile-nav-link">Insights</a>
+    </nav>
+    <main>
+      <section class="hero section">
+        <a class="back-link" href="./index.html#professional-projects">&larr; Back to home</a>
+        <p class="eyebrow">Case Study · HEROIC Guardian</p>
+        <h1>Rebuilding an unstable cybersecurity app into a reliable Flutter product</h1>
+        <p class="hero-lead">
+          HEROIC Guardian was unstable when I worked on it. I redesigned pages and functionality, stabilized modules,
+          moved scattered UI logic toward Clean Architecture and BLoC/Cubit, and handled product-critical areas including
+          IAP, 2FA, identity protection, analytics, Crashlytics, release quality, and store growth work.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="https://play.google.com/store/apps/details?id=com.heroic.application" target="_blank" rel="noreferrer">Google Play</a>
+          <a class="button" href="https://apps.apple.com/us/app/heroic-guardian/id6741095916" target="_blank" rel="noreferrer">App Store</a>
+        </div>
+      </section>
+
+      <section class="section case-context">
+        <article><span>Company</span><strong>HEROIC Cybersecurity</strong></article>
+        <article><span>Role</span><strong>Senior Flutter Developer (Solo)</strong></article>
+        <article><span>Timeline</span><strong>June 2025 – May 2026</strong></article>
+        <article><span>Domain</span><strong>Cybersecurity, identity, privacy</strong></article>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Starting Point</p>
+          <h2>The app needed stability, clearer product flows, and a structure that could survive growth</h2>
+        </div>
+        <div class="case-narrative">
+          <p>
+            The earlier implementation was unstable and had too much logic scattered through UI and `setState` usage.
+            My work was not only screen implementation. I had to understand the product, redesign the user-facing flows,
+            clean up module responsibilities, and centralize decisions so features like subscriptions, identity protection,
+            breach monitoring, privacy scan, alerts, dashboard, auth, and profile flows could be maintained more safely.
+          </p>
+          <p>
+            I treated the work as product engineering: fix the architecture, make critical flows reliable, add analytics
+            to understand where users drop off, monitor crashes, and connect release quality with ASO and growth decisions.
+          </p>
+        </div>
+      </section>
+
+      <section class="section method-section">
+        <div class="section-heading">
+          <p class="eyebrow">Architecture</p>
+          <h2>Moving from scattered screen logic to a layered Flutter structure</h2>
+        </div>
+        <div class="method-grid">
+          <article>
+            <span>Presentation</span>
+            <h3>Screens & Widgets</h3>
+            <p>Redesigned pages as passive UI and reduced decision-making inside screens.</p>
+          </article>
+          <article>
+            <span>State</span>
+            <h3>BLoC / Cubit</h3>
+            <p>Moved events, states, loading, validation, and navigation decisions into state layers.</p>
+          </article>
+          <article>
+            <span>Domain</span>
+            <h3>Use Cases</h3>
+            <p>Separated product actions for auth, identity, privacy scan, subscriptions, alerts, and breach flows.</p>
+          </article>
+          <article>
+            <span>Data</span>
+            <h3>Repositories</h3>
+            <p>Coordinated APIs, cache, Firebase, platform services, and product data responsibilities.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Workstreams</p>
+          <h2>The main product problems I solved across the app</h2>
+        </div>
+        <div class="case-detail-grid">
+          <article>
+            <span>Subscriptions</span>
+            <h3>IAP flow and backend validation</h3>
+            <p>
+              I led the IAP solution because Apple and Google purchases cannot rely only on the app login account.
+              I coordinated with the backend team and shaped the validation approach around transaction IDs.
+            </p>
+          </article>
+          <article>
+            <span>Identity</span>
+            <h3>Background identity status</h3>
+            <p>
+              Identity adding took time, so I first suggested sockets for status updates. When backend support was not
+              available, I guided an API-based status-check approach so the process could continue without blocking the app.
+            </p>
+          </article>
+          <article>
+            <span>Reliability</span>
+            <h3>Crash and module stabilization</h3>
+            <p>
+              I worked across unstable modules, improved page behavior, monitored crashes with Crashlytics, and connected
+              release quality with production observations.
+            </p>
+          </article>
+          <article>
+            <span>Product</span>
+            <h3>Analytics and drop-off reports</h3>
+            <p>
+              I added events to see where users were dropping off, where the app needed improvement, and submitted reports
+              so product decisions were based on behavior instead of assumptions.
+            </p>
+          </article>
+          <article>
+            <span>Security UX</span>
+            <h3>2FA, auth, identity, privacy</h3>
+            <p>
+              I worked on security-sensitive flows including authentication, two-factor flows, identity protection,
+              privacy scan, breach monitoring, alerts, and profile-related user journeys.
+            </p>
+          </article>
+          <article>
+            <span>Growth</span>
+            <h3>ASO and release quality</h3>
+            <p>
+              I treated ASO as a product loop for Google Play and Apple App Store: audit the real feature pillars,
+              map them to search intent, improve listing copy, redesign screenshot narrative, reduce review risk,
+              and validate changes through analytics, user feedback, crash monitoring, and release quality.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Challenges & Resolutions</p>
+          <h2>The difficult parts were not just coding screens. They were product and platform problems</h2>
+        </div>
+        <div class="challenge-grid">
+          <article class="challenge-card">
+            <div>
+              <span>Challenge 01</span>
+              <h3>IAP could not depend only on app login.</h3>
+              <p>
+                A subscription purchase belongs to the Apple or Google purchase system first. That created a problem:
+                the app account alone was not enough to safely decide purchase ownership and validation.
+              </p>
+            </div>
+            <div>
+              <strong>How I resolved it</strong>
+              <p>
+                I led the discussion with the backend team and shaped the solution around transaction-id validation.
+                The goal was to validate the purchase from the platform transaction instead of trusting only the app login state.
+              </p>
+              <strong>What improved</strong>
+              <p>
+                The subscription flow became safer to reason about because mobile, backend, and platform purchase identity
+                were connected through a clearer validation path.
+              </p>
+            </div>
+          </article>
+
+          <article class="challenge-card">
+            <div>
+              <span>Challenge 02</span>
+              <h3>Identity adding was slow and could not block the user.</h3>
+              <p>
+                Adding an identity could take time in the background. If the app waited on the same screen without a proper
+                status mechanism, the user experience would feel broken or uncertain.
+              </p>
+            </div>
+            <div>
+              <strong>How I resolved it</strong>
+              <p>
+                I first suggested sockets so the backend could notify the app when the identity was added. When that was not
+                implemented, I advised using an API status-check approach so the mobile app could keep checking progress in
+                the background without freezing the experience.
+              </p>
+              <strong>What improved</strong>
+              <p>
+                The app could handle a long-running operation more gracefully and keep the user flow moving while the
+                background identity process continued.
+              </p>
+            </div>
+          </article>
+
+          <article class="challenge-card">
+            <div>
+              <span>Challenge 03</span>
+              <h3>The app was unstable with scattered screen logic.</h3>
+              <p>
+                Many parts of the app were difficult to maintain because behavior was spread across UI code and repeated
+                state handling patterns. This made new features and bug fixing risky.
+              </p>
+            </div>
+            <div>
+              <strong>How I resolved it</strong>
+              <p>
+                I visualized a cleaner structure and moved responsibilities into Clean Architecture layers: UI as passive
+                screens/widgets, BLoC/Cubit for state, use cases for product actions, and repositories for API, cache,
+                Firebase, and platform coordination.
+              </p>
+              <strong>What improved</strong>
+              <p>
+                The product became easier to debug and extend because the app had clearer boundaries between UI,
+                business decisions, and data operations.
+              </p>
+            </div>
+          </article>
+
+          <article class="challenge-card">
+            <div>
+              <span>Challenge 04</span>
+              <h3>Product decisions needed real user behavior.</h3>
+              <p>
+                It was not enough to guess which screens or flows needed improvement. The team needed visibility into where
+                users were dropping off and how releases affected the product.
+              </p>
+            </div>
+            <div>
+              <strong>How I resolved it</strong>
+              <p>
+                I added analytics events across important flows and used Crashlytics/release observations to connect
+                engineering work with product reports. I submitted reports showing where users dropped off and where the app
+                needed improvement.
+              </p>
+              <strong>What improved</strong>
+              <p>
+                Product improvements became easier to prioritize because architecture work, crash monitoring, analytics,
+                ASO, and release quality were connected into one feedback loop.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Modules</p>
+          <h2>The work touched the product as a whole, not one isolated screen</h2>
+        </div>
+        <div class="case-narrative">
+          <p>
+            The local project structure reflects the product scope: auth, subscription, identity protection, privacy scan,
+            breach and breach monitoring, alerts, dashboard, family, support, profile, master data, and shared analytics.
+            My contribution was to work across these areas as the mobile owner and make the app more stable, structured,
+            and measurable.
+          </p>
+          <div class="case-stack">
+            <span>Flutter</span><span>Clean Architecture</span><span>BLoC / Cubit</span><span>Firebase Analytics</span><span>Crashlytics</span><span>IAP</span><span>2FA</span><span>Identity Protection</span><span>Privacy Scan</span><span>ASO</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Outcome</p>
+          <h2>A more stable, measurable, and growth-ready mobile product</h2>
+        </div>
+        <div class="growth-card">
+          <p>
+            The strongest confirmed outcome is the growth from early traction to around 10,000 downloads and steadily increasing. The engineering
+            contribution behind that was broader than one feature: architecture cleanup, product flow redesign, analytics,
+            Crashlytics, subscription reliability, identity status handling, 2FA/auth improvements, release quality, and ASO.
+          </p>
+          <strong>Known result: downloads increased from 200 to around 10,000 and steadily increasing.</strong>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact-section">
+        <p class="eyebrow">Contact</p>
+        <h2>Ready to discuss senior Flutter, mobile architecture, or product engineering roles</h2>
+        <p class="contact-links">
+          <span>Email: <a href="mailto:muhmmdshabeer@gmail.com">muhmmdshabeer@gmail.com</a></span>
+          <span class="contact-sep">&nbsp;·&nbsp;</span>
+          <span>Phone: <a href="tel:+919567200188">+91 95672 00188</a></span>
+        </p>
+        <div class="hero-actions center">
+          <a class="button primary" href="mailto:muhmmdshabeer@gmail.com">Email Me</a>
+          <a class="button" href="https://linkedin.com/in/muhammed-shabeer-tm-55271018b" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="button" href="https://github.com/meahdev" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="button" href="https://medium.com/@muhmmdshabeer" target="_blank" rel="noreferrer">Medium</a>
+        </div>
+      </section>
+    </main>
+    <script src="./site.js?v=motion-22" defer></script>
+  </body>
+</html>

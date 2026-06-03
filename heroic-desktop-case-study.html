@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HEROIC Desktop Case Study | Muhammed Shabeer TM</title>
+    <link rel="stylesheet" href="./styles.css?v=motion-24" />
+  </head>
+  <body class="case-page">
+    <header class="site-header">
+      <a class="brand" href="./index.html#top">
+        <img width="36" height="36" decoding="async" src="./assets/profile-thumb.jpg?v=photo-20260603b" alt="Muhammed Shabeer TM" />
+        <span>Muhammed Shabeer TM</span>
+      </a>
+                  <nav id="primary-nav" aria-label="Primary navigation">
+        <a href="./index.html#professional-projects">Work</a>
+        <a href="./about.html">About</a>
+        <a href="./method.html">Method</a>
+        <a href="./index.html#personal-projects">Personal</a>
+        <a href="./index.html#insights">Insights</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+      <a href="./index.html#professional-projects" class="mobile-nav-link">Work</a>
+      <a href="./about.html" class="mobile-nav-link">About</a>
+      <a href="./method.html" class="mobile-nav-link">Method</a>
+      <a href="./index.html#personal-projects" class="mobile-nav-link">Personal</a>
+      <a href="./index.html#insights" class="mobile-nav-link">Insights</a>
+    </nav>
+    <main>
+      <section class="hero section">
+        <a class="back-link" href="./index.html#professional-projects">&larr; Back to home</a>
+        <p class="eyebrow">Case Study · HEROIC Desktop</p>
+        <h1>Building a Windows security desktop prototype with Flutter, Go, osquery, and Inno Setup</h1>
+        <p class="hero-lead">
+          This HEROIC desktop project was a non-distributed Windows security prototype. I built the experience around a
+          Flutter desktop interface, a Go-based Windows agent, osquery-powered system data retrieval, and Inno Setup
+          packaging so the app could behave like a desktop security product instead of a simple UI demo.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#screens">View Screens</a>
+          <a class="button" href="./index.html#professional-projects">Back to Projects</a>
+        </div>
+      </section>
+
+      <section class="section case-context">
+        <article><span>Company</span><strong>HEROIC Cybersecurity</strong></article>
+        <article><span>Role</span><strong>Senior Flutter Developer (Solo)</strong></article>
+        <article><span>Timeline</span><strong>June 2025 – May 2026</strong></article>
+        <article><span>Domain</span><strong>Windows security desktop prototype</strong></article>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Product Goal</p>
+          <h2>A desktop security companion that makes device health and risk visible</h2>
+        </div>
+        <div class="case-narrative">
+          <p>
+            The idea was to build an antivirus-style HEROIC desktop app for Windows. The product needed to show a clear
+            protection score, highlight concerns, record device activity, inspect system information, and surface security
+            insights that a user could understand quickly.
+          </p>
+          <p>
+            Because this kind of app depends on real system state, Flutter alone was not enough. The desktop UI handled the
+            product experience, while the Go agent worked closer to Windows and used osquery to retrieve device and system
+            details.
+          </p>
+        </div>
+      </section>
+
+      <section class="section method-section">
+        <div class="section-heading">
+          <p class="eyebrow">Architecture</p>
+          <h2>The product was split between a polished desktop shell and a system-aware Windows agent</h2>
+        </div>
+        <div class="method-grid">
+          <article>
+            <span>Interface</span>
+            <h3>Flutter Desktop</h3>
+            <p>Dashboard, activity feed, system tabs, security insights, account, settings, and desktop navigation.</p>
+          </article>
+          <article>
+            <span>Agent</span>
+            <h3>Go Windows Agent</h3>
+            <p>Background system-side work for collecting and preparing device information outside the UI layer.</p>
+          </article>
+          <article>
+            <span>Telemetry</span>
+            <h3>osquery</h3>
+            <p>Used to retrieve device, software, storage, performance, and security-related system details.</p>
+          </article>
+          <article>
+            <span>Installer</span>
+            <h3>Inno Setup</h3>
+            <p>Combined the desktop application pieces into a Windows installer workflow for the prototype build.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">What I Built</p>
+          <h2>The app covered dashboard, system visibility, activity, insights, account, and settings flows</h2>
+        </div>
+        <div class="case-detail-grid">
+          <article>
+            <span>Dashboard</span>
+            <h3>Protection score and concerns</h3>
+            <p>Created the main overview showing protection score, CPU, memory, storage, concerns, and recent activity.</p>
+          </article>
+          <article>
+            <span>Activity</span>
+            <h3>Filtered event timeline</h3>
+            <p>Designed activity views for all, unread, security, and system events including sign-in, extension, update, and agent activity.</p>
+          </article>
+          <article>
+            <span>System</span>
+            <h3>Live device inspection</h3>
+            <p>Built system sections for overview, performance, hardware, software, storage, and network visibility.</p>
+          </article>
+          <article>
+            <span>Security</span>
+            <h3>Actionable insights</h3>
+            <p>Structured security insights around concerns, browser extensions, USB activity, and account access signals.</p>
+          </article>
+          <article>
+            <span>Account</span>
+            <h3>Profile and HEROIC apps</h3>
+            <p>Added account surfaces for profile state, subscription information, device status, and linked HEROIC apps.</p>
+          </article>
+          <article>
+            <span>Settings</span>
+            <h3>Desktop preferences</h3>
+            <p>Included notification preferences, app version information, update checks, help center, and privacy/terms access.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Challenges & Resolutions</p>
+          <h2>The important challenge was connecting desktop UX with real Windows system behavior</h2>
+        </div>
+        <div class="challenge-grid">
+          <article class="challenge-card">
+            <div>
+              <span>Challenge 01</span>
+              <h3>Flutter UI alone could not retrieve the required system-level data.</h3>
+              <p>
+                A desktop security product needs device, software, storage, performance, and security information from
+                Windows. That work belongs closer to the operating system than the UI layer.
+              </p>
+            </div>
+            <div>
+              <strong>How I resolved it</strong>
+              <p>
+                I separated responsibilities: Flutter handled the product interface, while a Go Windows agent worked as
+                the system-side component and used osquery to retrieve the required details.
+              </p>
+              <strong>What improved</strong>
+              <p>
+                The app could present real device context while keeping the UI focused on clarity, navigation, and user
+                decision-making.
+              </p>
+            </div>
+          </article>
+
+          <article class="challenge-card">
+            <div>
+              <span>Challenge 02</span>
+              <h3>The product needed security information without overwhelming the user.</h3>
+              <p>
+                Raw system data is not useful by itself. The experience needed to translate telemetry into dashboard
+                signals, concerns, system sections, and insight cards.
+              </p>
+            </div>
+            <div>
+              <strong>How I resolved it</strong>
+              <p>
+                I organized the app around understandable areas: protection score, recent activity, system tabs, storage
+                usage, software inventory, performance data, and security insights.
+              </p>
+              <strong>What improved</strong>
+              <p>
+                The prototype became easier to read because the user could move from a high-level protection score into
+                the specific system or security detail that needed attention.
+              </p>
+            </div>
+          </article>
+
+          <article class="challenge-card">
+            <div>
+              <span>Challenge 03</span>
+              <h3>The app needed to feel like a Windows product, not only a Flutter screen.</h3>
+              <p>
+                Desktop security apps need a proper installable shape, predictable navigation, and settings/account flows
+                that match a utility product.
+              </p>
+            </div>
+            <div>
+              <strong>How I resolved it</strong>
+              <p>
+                I combined Flutter desktop, the Go agent, and Inno Setup packaging so the prototype could be installed and
+                reviewed as a Windows desktop product.
+              </p>
+              <strong>What improved</strong>
+              <p>
+                The project moved closer to a real desktop app workflow with installer packaging, app settings, account
+                screens, and a system-aware dashboard.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="screens" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Screens</p>
+          <h2>Key screens from the HEROIC Windows desktop prototype</h2>
+        </div>
+        <div class="desktop-gallery">
+          <figure>
+            <img loading="lazy" decoding="async" src="./assets/heroic-desktop-dashboard.png" alt="HEROIC desktop dashboard" />
+            <figcaption>Dashboard with protection score, concerns, metrics, and recent activity.</figcaption>
+          </figure>
+          <figure>
+            <img loading="lazy" decoding="async" src="./assets/heroic-desktop-activity-all.png" alt="HEROIC desktop activity all events" />
+            <figcaption>Activity timeline with unread and category filters.</figcaption>
+          </figure>
+          <figure>
+            <img loading="lazy" decoding="async" src="./assets/heroic-desktop-activity-security.png" alt="HEROIC desktop security activity" />
+            <figcaption>Security event filtering for sign-in and browser extension activity.</figcaption>
+          </figure>
+          <figure>
+            <img loading="lazy" decoding="async" src="./assets/heroic-desktop-activity-system.png" alt="HEROIC desktop system activity" />
+            <figcaption>System event filtering for CPU, disk, and Windows update concerns.</figcaption>
+          </figure>
+          <figure>
+            <img loading="lazy" decoding="async" src="./assets/heroic-desktop-system-overview.png" alt="HEROIC desktop system overview" />
+            <figcaption>System overview with device details and protection status.</figcaption>
+          </figure>
+          <figure>
+            <img loading="lazy" decoding="async" src="./assets/heroic-desktop-system-software.png" alt="HEROIC desktop installed software" />
+            <figcaption>Installed applications list retrieved for software visibility.</figcaption>
+          </figure>
+          <figure>
+            <img loading="lazy" decoding="async" src="./assets/heroic-desktop-system-storage.png" alt="HEROIC desktop storage screen" />
+            <figcaption>Storage usage, drive state, and category breakdown.</figcaption>
+          </figure>
+          <figure>
+            <img loading="lazy" decoding="async" src="./assets/heroic-desktop-system-performance.png" alt="HEROIC desktop performance screen" />
+            <figcaption>Performance metrics and top processes by memory.</figcaption>
+          </figure>
+          <figure>
+            <img loading="lazy" decoding="async" src="./assets/heroic-desktop-security-insights.png" alt="HEROIC desktop security insights" />
+            <figcaption>Security insights with concerns, severity, and recommended actions.</figcaption>
+          </figure>
+          <figure>
+            <img loading="lazy" decoding="async" src="./assets/heroic-desktop-account.png" alt="HEROIC desktop account screen" />
+            <figcaption>Account, subscription, device, and HEROIC app surfaces.</figcaption>
+          </figure>
+          <figure>
+            <img loading="lazy" decoding="async" src="./assets/heroic-desktop-settings.png" alt="HEROIC desktop settings screen" />
+            <figcaption>Settings, notifications, updates, help, and legal links.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Stack</p>
+          <h2>The project combined product UI, system telemetry, and desktop packaging</h2>
+        </div>
+        <div class="case-narrative">
+          <div class="case-stack">
+            <span>Flutter Desktop</span><span>Go</span><span>Windows Agent</span><span>osquery</span><span>System Telemetry</span><span>Security UX</span><span>Inno Setup</span><span>Desktop Prototype</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact-section">
+        <p class="eyebrow">Contact</p>
+        <h2>Ready to discuss senior Flutter, mobile architecture, or product engineering roles</h2>
+        <p class="contact-links">
+          <span>Email: <a href="mailto:muhmmdshabeer@gmail.com">muhmmdshabeer@gmail.com</a></span>
+          <span class="contact-sep">&nbsp;·&nbsp;</span>
+          <span>Phone: <a href="tel:+919567200188">+91 95672 00188</a></span>
+        </p>
+        <div class="hero-actions center">
+          <a class="button primary" href="mailto:muhmmdshabeer@gmail.com">Email Me</a>
+          <a class="button" href="https://linkedin.com/in/muhammed-shabeer-tm-55271018b" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="button" href="https://github.com/meahdev" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="button" href="https://medium.com/@muhmmdshabeer" target="_blank" rel="noreferrer">Medium</a>
+        </div>
+      </section>
+    </main>
+    <script src="./site.js?v=motion-22" defer></script>
+  </body>
+</html>

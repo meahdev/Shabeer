@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Manorama SSO Flutter SDK Case Study | Muhammed Shabeer TM</title>
+    <link rel="stylesheet" href="./styles.css?v=motion-24" />
+  </head>
+  <body class="case-page">
+    <header class="site-header">
+      <a class="brand" href="./index.html#top"><img width="36" height="36" decoding="async" src="./assets/profile-thumb.jpg?v=photo-20260603b" alt="Muhammed Shabeer TM" /><span>Muhammed Shabeer TM</span></a>
+                  <nav id="primary-nav" aria-label="Primary navigation">
+        <a href="./index.html#professional-projects">Work</a>
+        <a href="./about.html">About</a>
+        <a href="./method.html">Method</a>
+        <a href="./index.html#personal-projects">Personal</a>
+        <a href="./index.html#insights">Insights</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+      <a href="./index.html#professional-projects" class="mobile-nav-link">Work</a>
+      <a href="./about.html" class="mobile-nav-link">About</a>
+      <a href="./method.html" class="mobile-nav-link">Method</a>
+      <a href="./index.html#personal-projects" class="mobile-nav-link">Personal</a>
+      <a href="./index.html#insights" class="mobile-nav-link">Insights</a>
+    </nav>
+    <main>
+      <section class="hero section">
+        <a class="back-link" href="./index.html#professional-projects">&larr; Back to home</a>
+        <p class="eyebrow">Platform Case Study · Manorama SSO</p>
+        <h1>Building a configurable Flutter SDK for a shared Manorama login ecosystem</h1>
+        <p class="hero-lead">
+          Android and iOS already had native SSO SDK mechanisms. I built the Flutter SDK layer so Manorama Flutter apps
+          could use the same authentication system with reusable login screens, client configuration, platform security
+          setup, and documented installation steps.
+        </p>
+      </section>
+
+      <section class="section case-context">
+        <article><span>Company</span><strong>HiFX IT & Media Services</strong></article>
+        <article><span>Role</span><strong>Senior Flutter Developer (Solo)</strong></article>
+        <article><span>Timeline</span><strong>Sep 2023 – Dec 2024</strong></article>
+        <article><span>Domain</span><strong>Manorama SSO Flutter SDK</strong></article>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Why It Exists</p>
+          <h2>One account system needed a Flutter integration path without every app rebuilding auth</h2>
+        </div>
+        <div class="case-narrative">
+          <p>
+            The goal was not to build a single app login screen. The goal was to create a reusable Flutter SDK layer
+            that could sit inside different Manorama Flutter applications and follow the same SSO behavior already
+            available through native Android and iOS SDKs.
+          </p>
+          <p>
+            The SDK reads app/client configuration, initializes storage and device details, applies platform-specific
+            Android/iOS values, and presents the auth flows needed by the consuming app.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Configurable SDK</p>
+          <h2>Admin/client instructions control how the SSO experience behaves for each app</h2>
+        </div>
+        <div class="case-detail-grid">
+          <article>
+            <span>Environment</span>
+            <h3>Stage and production setup</h3>
+            <p>The SDK loads a JSON configuration and switches between UAT and production identity endpoints.</p>
+          </article>
+          <article>
+            <span>Client identity</span>
+            <h3>Android and iOS app mapping</h3>
+            <p>Configuration supports platform-specific client IDs, bundle/package identity, redirect URLs, scopes, and hashes.</p>
+          </article>
+          <article>
+            <span>Brand system</span>
+            <h3>Network logo visibility</h3>
+            <p>The bottom "One Network. One Account." area can show or hide Manorama ecosystem logos per app configuration.</p>
+          </article>
+          <article>
+            <span>Login options</span>
+            <h3>Password, OTP, Google, Apple</h3>
+            <p>The SDK supports multiple sign-in paths and social login options based on platform/app requirements.</p>
+          </article>
+          <article>
+            <span>Security</span>
+            <h3>SHA/fingerprint and token handling</h3>
+            <p>Android fingerprint/signature details are captured, client tokens are generated, and SHA-256 code challenge flow is used.</p>
+          </article>
+          <article>
+            <span>Adoption</span>
+            <h3>Documentation and example app</h3>
+            <p>The package includes an example app and setup path so other Flutter apps can integrate the SDK consistently.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="screens" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">SDK Screens</p>
+          <h2>Reusable screens for the shared Manorama account experience</h2>
+        </div>
+        <div class="phone-gallery screenshot-gallery sso-gallery">
+          <figure class="phone-shot"><img loading="lazy" decoding="async" src="./assets/sso-sign-in.png" alt="Manorama SSO sign in screen" /></figure>
+          <figure class="phone-shot"><img loading="lazy" decoding="async" src="./assets/sso-otp.png" alt="Manorama SSO OTP sign in screen" /></figure>
+          <figure class="phone-shot"><img loading="lazy" decoding="async" src="./assets/sso-create-account.png" alt="Manorama SSO create account screen" /></figure>
+          <figure class="phone-shot"><img loading="lazy" decoding="async" src="./assets/sso-reset-password.png" alt="Manorama SSO reset password screen" /></figure>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Engineering Flow</p>
+          <h2>The SDK separates app configuration, platform setup, UI flows, and callbacks</h2>
+        </div>
+        <div class="method-grid">
+          <article>
+            <span>01</span>
+            <h3>Initialize config</h3>
+            <p>Load the app's SSO JSON, initialize storage, read package/bundle data, and prepare Android/iOS client values.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Present auth flows</h3>
+            <p>Expose login, OTP login, register, forgot password, profile completion, and edit email/mobile/name flows.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Secure requests</h3>
+            <p>Use client hash/token generation, app fingerprint details, device metadata, and code challenge generation.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Return control</h3>
+            <p>Use auth and user callbacks so the consuming Flutter app can continue after login or required-field completion.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Challenges & Resolution</p>
+          <h2>The hard part was making a shared identity system feel simple for every Flutter app team</h2>
+        </div>
+        <div class="challenge-grid">
+          <article class="challenge-card">
+            <div>
+              <span>Challenge</span>
+              <h3>Native SDK behavior had to be brought into Flutter without changing the identity direction.</h3>
+            </div>
+            <div>
+              <strong>Resolution</strong>
+              <p>Created a Flutter SDK wrapper around the same client configuration and login behavior used by the native SSO approach.</p>
+              <strong>Benefit</strong>
+              <p>Flutter apps could adopt Manorama SSO without rebuilding the login system independently.</p>
+            </div>
+          </article>
+          <article class="challenge-card">
+            <div>
+              <span>Challenge</span>
+              <h3>Different apps needed different branding and login options.</h3>
+            </div>
+            <div>
+              <strong>Resolution</strong>
+              <p>Used configuration-driven flags for environment, social options, and Manorama network logo visibility.</p>
+              <strong>Benefit</strong>
+              <p>The same SDK could support different app identities while keeping the core SSO flow consistent.</p>
+            </div>
+          </article>
+          <article class="challenge-card">
+            <div>
+              <span>Challenge</span>
+              <h3>Security setup had to work across platform-specific app identities.</h3>
+            </div>
+            <div>
+              <strong>Resolution</strong>
+              <p>Handled package/bundle mapping, fingerprint/signature details, client hashes, token generation, and SHA-256 challenge flow.</p>
+              <strong>Benefit</strong>
+              <p>Reduced integration mistakes and made the SDK safer to reuse across Flutter apps.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="case-narrative">
+          <p>
+            This case study is intentionally separated from app migration work. The SSO SDK is a platform contribution
+            for Manorama's wider Flutter app ecosystem.
+          </p>
+          <div class="case-stack">
+            <span>Flutter SDK</span><span>Manorama SSO</span><span>Android/iOS bridge</span><span>JSON configuration</span><span>OTP</span><span>Google Sign-In</span><span>Apple Sign-In</span><span>SHA/fingerprint setup</span><span>Documentation</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact-section">
+        <p class="eyebrow">Contact</p>
+        <h2>Ready to discuss senior Flutter, mobile architecture, or product engineering roles</h2>
+        <p class="contact-links">
+          <span>Email: <a href="mailto:muhmmdshabeer@gmail.com">muhmmdshabeer@gmail.com</a></span>
+          <span class="contact-sep">&nbsp;·&nbsp;</span>
+          <span>Phone: <a href="tel:+919567200188">+91 95672 00188</a></span>
+        </p>
+        <div class="hero-actions center">
+          <a class="button primary" href="mailto:muhmmdshabeer@gmail.com">Email Me</a>
+          <a class="button" href="https://linkedin.com/in/muhammed-shabeer-tm-55271018b" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="button" href="https://github.com/meahdev" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="button" href="https://medium.com/@muhmmdshabeer" target="_blank" rel="noreferrer">Medium</a>
+        </div>
+      </section>
+    </main>
+    <script src="./site.js?v=motion-22" defer></script>
+  </body>
+</html>
