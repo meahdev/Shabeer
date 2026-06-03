@@ -1,0 +1,154 @@
+%-------------------------
+% Muhammed Shabeer TM - Senior Flutter Developer
+% Built from user's original resume - no invented content
+% Targeted for Google / top product companies
+% ATS-friendly + professional design
+%-------------------------
+
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[
+  hidelinks,
+  pdfborder={0 0 0},
+  pdfhighlight=/N
+]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\footskip}{14pt}
+
+% Margins (proven to fit on one page)
+\addtolength{\oddsidemargin}{-0.7in}
+\addtolength{\evensidemargin}{-0.7in}
+\addtolength{\textwidth}{1.4in}
+\addtolength{\topmargin}{-1.0in}
+\addtolength{\textheight}{2.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{2pt}\large\bfseries
+}{}{0em}{}[\vspace{-2pt}\titlerule\vspace{2pt}]
+\titlespacing*{\section}{0pt}{4pt}{2pt}
+
+% ATS-readable PDF
+\pdfgentounicode=1
+\hypersetup{
+  colorlinks=false,
+  pdfborder={0 0 0},
+  pdfhighlight=/N
+}
+
+\newcommand{\role}[4]{
+  \vspace{2pt}
+  \noindent\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & #2 \\
+    #3 & #4 \\
+  \end{tabular*}
+  \vspace{-6pt}
+}
+
+\newcommand{\project}[2]{
+  \noindent\textbf{#1} \hspace{2pt}\textemdash\hspace{2pt} #2
+  \vspace{1pt}
+}
+
+\setlist[itemize]{leftmargin=0.2in, itemsep=0pt, topsep=1pt, parsep=0pt}
+
+\begin{document}
+
+\mbox{}\vspace{15pt}
+
+%----------HEADING----------
+\begin{center}
+    {\Huge \scshape Muhammed Shabeer TM}\\[4pt]
+    {\small Senior Flutter Developer}\\[6pt]
+    {\small
+    \faPhone*\ +91 9567200188 \quad
+    \faEnvelope\ \href{mailto:muhmmdshabeer@gmail.com}{muhmmdshabeer@gmail.com} \quad
+    \faLinkedin\ \href{https://linkedin.com/in/muhammed-shabeer-tm-55271018b}{LinkedIn}\\[2pt]
+    \faGlobe\ \href{https://shabeer.pages.dev}{Portfolio} \quad
+    \faGithub\ \href{https://github.com/meahdev}{GitHub} \quad
+    \faMedium\ \href{https://medium.com/@muhmmdshabeer}{Medium}
+    }
+\end{center}
+
+\vspace{-4pt}
+
+%-----------EXPERIENCE-----------
+\section*{Experience}
+
+\role{Heroic Cybersecurity}{Jun 2025 -- May 2026}{Senior Flutter Developer}{Remote (US)}
+\begin{itemize}
+  \item Led the complete revamp of HEROIC Guardian using Clean Architecture and BLoC, improving scalability, modularity, and maintainability.
+  \item Owned the full product lifecycle of HEROIC Guardian across Android and iOS, including analytics, crash monitoring, user reviews, retention, and app store optimization; grew downloads from 200 to nearly 10,000 with steady ongoing growth.
+  \item Engineered the full IAP subscription lifecycle (validation, restoration, receipt handling), reducing subscription failures by 35\%.
+  \item Implemented Firebase Crashlytics and Analytics, reducing crash rate by 28\% and improving onboarding insights.
+  \item Architected a Windows security agent in Flutter and Go with secure IPC and JWT authentication for real-time osquery telemetry.
+  \item Led mobile performance monitoring via Play Console and Firebase, delivering weekly KPI reports and A/B testing insights.
+  \item Led the complete UX revamp of InternetGuard VPN and reduced ANRs by 40\%, raising Play Store rating to 4.0+ and contributing to download growth from 1M to 1.5M+.
+\end{itemize}
+
+\role{HiFX IT \& Media Services}{Sep 2023 -- Dec 2024}{Senior Flutter Developer}{Kochi, India}
+\begin{itemize}
+  \item Architected and developed a Single Sign-On (SSO) solution for Manorama applications serving 10M+ users with Google and Apple login integration.
+  \item Led migration of native Android and iOS app Hello Address to Flutter, unifying codebases and improving development velocity and maintainability.
+  \item Applied Riverpod within a Domain-Driven Design (DDD) architecture to improve scalability, modularity, and separation of concerns.
+  \item Automated CI/CD pipelines using Jenkins, reducing release deployment time by 60\% and eliminating manual release errors.
+  \item Integrated Stripe and native in-app payments, increasing subscription conversion rate by 22\% and ensuring PCI-compliant transactions.
+  \item Established unit, widget, and integration test coverage to 75\%, reducing post-release defects by 30\%.
+\end{itemize}
+
+\role{Seeroo IT Solutions}{Dec 2019 -- Aug 2023}{Flutter Developer}{Kochi, India}
+\begin{itemize}
+  \item Built and scaled 5+ production-grade Flutter applications using BLoC, Provider, and GetX within MVVM and Clean Architecture patterns.
+  \item Reduced application crashes by 90\% through debugging, profiling, and performance optimization.
+  \item Integrated secure payment gateways (Freecharge, Payfort) and Firebase Cloud Messaging (FCM) for real-time engagement.
+  \item Engineered advanced geolocation modules (reverse geocoding, background tracking), improving location accuracy by 25\% and reducing API response latency.
+  \item Integrated AWS Amplify services (Cognito, Lambda) for secure authentication and scalable backend communication.
+\end{itemize}
+
+%-----------SHIPPED PRODUCTS----------
+\section*{Shipped Products}
+\vspace{2pt}
+\project{HEROIC Guardian}{Breach Monitoring \& Cybersecurity Mobile Application \quad \textcolor{blue}{\href{https://play.google.com/store/apps/details?id=com.heroic.application}{Android}} \quad \textcolor{blue}{\href{https://apps.apple.com/ae/app/heroic-guardian/id6741095916}{iOS}}}
+
+\project{InternetGuard}{VPN Firewall \& Privacy Protection Application \quad \textcolor{blue}{\href{https://play.google.com/store/apps/details?id=com.js.internetguard}{Android}}}
+
+\project{Hello Address}{Real Estate Mobile Application \quad \textcolor{blue}{\href{https://play.google.com/store/apps/details?id=com.manorama.helloaddress}{Android}} \quad \textcolor{blue}{\href{https://apps.apple.com/in/app/hello-address/id965147046}{iOS}}}
+
+\project{BuddyGuru}{Music \& Arts Social Platform \quad \textcolor{blue}{\href{https://play.google.com/store/apps/details?id=ai.buddyguru.app}{Android}} \quad \textcolor{blue}{\href{https://apps.apple.com/in/app/buddyguru-learn-collab-earn/id6465898281}{iOS}}}
+
+\project{Unidoc}{Healthcare Appointment Scheduling Application \quad \textcolor{blue}{\href{https://play.google.com/store/apps/details?id=com.ae.unidoc}{Android}} \quad \textcolor{blue}{\href{https://apps.apple.com/in/app/unidoc-doctor-appointment/id1527263282}{iOS}}}
+
+%-----------TECHNICAL SKILLS----------
+\section*{Technical Skills}
+\vspace{2pt}
+\noindent
+\textbf{Languages} \quad Dart, Go, Kotlin, Java, Swift \\
+\textbf{Frameworks} \quad Flutter \\
+\textbf{Architecture} \quad Clean Architecture, MVVM, DDD, BLoC, Riverpod, Provider, GetX \\
+\textbf{Backend \& Cloud} \quad REST APIs, Firebase, AWS Amplify (Cognito, Lambda) \\
+\textbf{Payments} \quad Stripe, In-App Purchases \\
+\textbf{DevOps \& Tools} \quad Jenkins, Codemagic, Git, GitHub, GitLab, Android Studio, Xcode, VS Code, Postman \\
+\textbf{Practice} \quad Agile, Scrum, Jira
+
+%-----------EDUCATION-----------
+\section*{Education}
+\vspace{2pt}
+\noindent\textbf{Bachelor of Science in Computer Science} \hspace{2pt}\textemdash\hspace{2pt} Calicut University, Kerala \hfill 2014 -- 2017
+
+\end{document}

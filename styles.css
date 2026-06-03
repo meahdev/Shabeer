@@ -278,7 +278,11 @@ p { color: var(--muted); line-height: 1.65; }
   margin-inline: auto;
   isolation: isolate;
 }
-.hero-visual::before {
+.hero-visual picture {
+  position: relative;
+  display: block;
+}
+.hero-visual picture::before {
   content: "";
   position: absolute;
   inset: -20px -18px 18px;
@@ -290,7 +294,7 @@ p { color: var(--muted); line-height: 1.65; }
     radial-gradient(circle at 18% 12%, rgba(243,201,77,.26), transparent 230px);
   box-shadow: 0 34px 100px rgba(7,7,7,.10);
 }
-.hero-visual::after {
+.hero-visual picture::after {
   content: "";
   position: absolute;
   inset: 13% -14% auto -12%;
@@ -300,11 +304,8 @@ p { color: var(--muted); line-height: 1.65; }
   border-bottom: 0;
   border-radius: 999px 999px 0 0;
 }
-.hero-visual picture,
 .hero-visual img {
   display: block;
-}
-.hero-visual img {
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
@@ -1352,11 +1353,27 @@ p { color: var(--muted); line-height: 1.65; }
     justify-content: center;
   }
   .hero-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    margin-top: 28px;
+  }
+  .hero-visual picture {
     width: min(280px, 76vw);
   }
-  .proof-top { right: -10px; }
-  .proof-left { left: -16px; }
-  .proof-right { right: -18px; }
+  .hero-visual .hero-proof {
+    display: block !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    max-width: 280px !important;
+    box-shadow: 0 8px 24px rgba(7,7,7,.06) !important;
+  }
   .section-heading {
     gap: 12px;
   }
@@ -1550,15 +1567,17 @@ p { color: var(--muted); line-height: 1.65; }
     transform: none;
   }
   .hero-visual {
-    width: min(230px, 68vw);
-    margin-top: 4px;
+    margin-top: 20px;
   }
-  .hero-visual::before {
+  .hero-visual picture {
+    width: min(230px, 68vw);
+  }
+  .hero-visual picture::before {
     inset: -18px -14px 18px;
     border-radius: 42% 42% 26px 26px;
   }
-  .hero-proof {
-    display: none;
+  .hero-visual .hero-proof {
+    max-width: 230px !important;
   }
   .hero-lead {
     font-size: 15.5px;
@@ -1811,8 +1830,11 @@ p { color: var(--muted); line-height: 1.65; }
     width: 34px;
     height: 34px;
   }
-  .hero-visual {
+  .hero-visual picture {
     width: min(220px, 66vw);
+  }
+  .hero-visual .hero-proof {
+    max-width: 220px !important;
   }
   .hero-proof strong {
     font-size: 13px;
