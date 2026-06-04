@@ -19,7 +19,7 @@
     <meta property="twitter:description" content="Case study of building a NeoPop-inspired studio productivity mobile app for a photographer friend to track calendar bookings, pricing, and profits." />
     <meta property="twitter:image" content="https://meahdev.github.io/assets/hero-portrait.jpg" />
 
-    <link rel="stylesheet" href="./styles.css?v=motion-25" />
+    <link rel="stylesheet" href="./styles.css?v=motion-32" />
   </head>
   <body class="case-page">
     <header class="site-header">
@@ -45,7 +45,7 @@
     <main>
       <section class="hero section">
         <a class="back-link" href="./index.html#personal-projects">&larr; Back to home</a>
-        <p class="eyebrow">Personal Project · Photography Work Tracker</p>
+        <p class="eyebrow">Technical Deep Dive · Photography Work Tracker</p>
         <h1>A NeoPop-inspired work tracker built for a photographer friend</h1>
         <p class="hero-lead">
           My friend is a photographer, so I built Photography Work Tracker to reduce the time spent managing enquiries,
@@ -90,17 +90,76 @@
           <p class="eyebrow">Screens</p>
           <h2>Real screenshots showing the dark creative system, calendar, alerts, pricing, and profit views</h2>
         </div>
-        <div class="phone-gallery screenshot-gallery">
-          <figure class="phone-shot"><img loading="lazy" decoding="async" src="./assets/work-tracker-login.png" alt="Photography Work Tracker login screen" /></figure>
-          <figure class="phone-shot"><img loading="lazy" decoding="async" src="./assets/work-tracker-forgot.png" alt="Forgot password screen" /></figure>
-          <figure class="phone-shot"><img loading="lazy" decoding="async" src="./assets/work-tracker-home.png" alt="Work Tracker dashboard" /></figure>
-          <figure class="phone-shot"><img loading="lazy" decoding="async" src="./assets/work-tracker-home-2.png" alt="Cancelled events and weekly overview" /></figure>
-          <figure class="phone-shot"><img loading="lazy" decoding="async" src="./assets/work-tracker-events.png" alt="Calendar events screen" /></figure>
-          <figure class="phone-shot"><img loading="lazy" decoding="async" src="./assets/work-tracker-add.png" alt="Add event screen" /></figure>
-          <figure class="phone-shot"><img loading="lazy" decoding="async" src="./assets/work-tracker-pricing.png" alt="Studio pricing screen" /></figure>
-          <figure class="phone-shot"><img loading="lazy" decoding="async" src="./assets/work-tracker-alerts.png" alt="Notifications screen" /></figure>
-          <figure class="phone-shot"><img loading="lazy" decoding="async" src="./assets/work-tracker-alert-detail.png" alt="Alert detail bottom sheet" /></figure>
-          <figure class="phone-shot"><img loading="lazy" decoding="async" src="./assets/work-tracker-profit.png" alt="Profit pulse screen" /></figure>
+        <div class="device-slider-container">
+          <!-- Ambient gold aura backing the device mockup -->
+          <div class="mockup-ambient-glow" style="background: radial-gradient(circle, rgba(243, 201, 77, 0.12) 0%, transparent 70%);"></div>
+
+          <!-- iPhone 15 Pro Vector Mockup -->
+          <div class="iphone-mockup">
+            <!-- Hardware Buttons -->
+            <div class="iphone-button volume-up"></div>
+            <div class="iphone-button volume-down"></div>
+            <div class="iphone-button power"></div>
+
+            <div class="iphone-screen">
+              <!-- Dynamic Island -->
+              <div class="iphone-island">
+                <div class="iphone-camera"></div>
+              </div>
+
+              <!-- Sliding Images Track -->
+              <div class="mockup-slides">
+                <div class="mockup-slides-track">
+                  <div class="mockup-slide" data-index="0" data-caption="Photography Work Tracker login screen with bold NeoPop layout.">
+                    <img loading="lazy" decoding="async" src="./assets/work-tracker-login.png" alt="Photography Work Tracker login screen" />
+                  </div>
+                  <div class="mockup-slide" data-index="1" data-caption="Forgot password screen featuring clean input styling.">
+                    <img loading="lazy" decoding="async" src="./assets/work-tracker-forgot.png" alt="Forgot password screen" />
+                  </div>
+                  <div class="mockup-slide" data-index="2" data-caption="Work Tracker dashboard showcasing overall event calendar.">
+                    <img loading="lazy" decoding="async" src="./assets/work-tracker-home.png" alt="Work Tracker dashboard" />
+                  </div>
+                  <div class="mockup-slide" data-index="3" data-caption="Cancelled events breakdown and weekly metrics overview.">
+                    <img loading="lazy" decoding="async" src="./assets/work-tracker-home-2.png" alt="Cancelled events and weekly overview" />
+                  </div>
+                  <div class="mockup-slide" data-index="4" data-caption="Calendar events list showing detailed scheduled bookings.">
+                    <img loading="lazy" decoding="async" src="./assets/work-tracker-events.png" alt="Calendar events screen" />
+                  </div>
+                  <div class="mockup-slide" data-index="5" data-caption="Add event interface for scheduling new photography projects.">
+                    <img loading="lazy" decoding="async" src="./assets/work-tracker-add.png" alt="Add event screen" />
+                  </div>
+                  <div class="mockup-slide" data-index="6" data-caption="Studio pricing configuration screen for custom package rates.">
+                    <img loading="lazy" decoding="async" src="./assets/work-tracker-pricing.png" alt="Studio pricing screen" />
+                  </div>
+                  <div class="mockup-slide" data-index="7" data-caption="Notifications and alerts log for pending collections.">
+                    <img loading="lazy" decoding="async" src="./assets/work-tracker-alerts.png" alt="Notifications screen" />
+                  </div>
+                  <div class="mockup-slide" data-index="8" data-caption="Alert detail bottom sheet displaying billing statuses.">
+                    <img loading="lazy" decoding="async" src="./assets/work-tracker-alert-detail.png" alt="Alert detail bottom sheet" />
+                  </div>
+                  <div class="mockup-slide" data-index="9" data-caption="Profit pulse screen tracking monthly earnings and expenses.">
+                    <img loading="lazy" decoding="async" src="./assets/work-tracker-profit.png" alt="Profit pulse screen" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Screen Glare Overlay -->
+              <div class="screen-glare"></div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="mockup-controls">
+            <button class="mockup-arrow prev-slide" aria-label="Previous screenshot">
+              <svg viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
+            </button>
+            <div class="mockup-dots"></div>
+            <button class="mockup-arrow next-slide" aria-label="Next screenshot">
+              <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+            </button>
+          </div>
+
+          <p class="mockup-caption">Photography Work Tracker login screen with bold NeoPop layout.</p>
         </div>
       </section>
 
@@ -133,6 +192,6 @@
         </div>
       </section>
     </main>
-    <script src="./site.js?v=motion-22" defer></script>
+    <script src="./site.js?v=motion-25" defer></script>
   </body>
 </html>

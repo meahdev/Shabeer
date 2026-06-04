@@ -184,6 +184,10 @@ nav a,
   }
 }
 
+.desktop-br {
+  display: block;
+}
+
 .section {
   width: min(1180px, calc(100% - 40px));
   margin: 0 auto;
@@ -914,6 +918,7 @@ p { color: var(--muted); line-height: 1.65; }
   grid-template-columns: repeat(3, 1fr);
   gap: 14px;
   align-items: start;
+  margin-top: 34px;
 }
 .phone-shot {
   margin: 0;
@@ -921,6 +926,29 @@ p { color: var(--muted); line-height: 1.65; }
   border: 2px solid rgba(255,255,255,.14);
   border-radius: 22px;
   background: #060606;
+  position: relative;
+  transition: transform .4s var(--motion-ease), box-shadow .4s var(--motion-ease), border-color .4s var(--motion-ease);
+  will-change: transform, box-shadow;
+  cursor: pointer;
+}
+.phone-shot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,.09) 45%, rgba(255,255,255,.18) 50%, rgba(255,255,255,.09) 55%, transparent 60%);
+  background-size: 250% 250%;
+  background-position: 200% 0;
+  transition: background-position .6s ease;
+}
+.phone-shot:hover::after {
+  background-position: -50% 0;
+}
+.phone-shot:hover {
+  transform: scale(1.03) translate3d(0, -6px, 0);
+  box-shadow: 0 30px 70px rgba(7,7,7,.22) !important;
+  border-color: var(--gold) !important;
 }
 .phone-gallery img,
 .phone-shot img {
@@ -1169,18 +1197,50 @@ p { color: var(--muted); line-height: 1.65; }
   margin-bottom: 12px;
 }
 .desktop-gallery {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 20px;
   margin-top: 34px;
+  padding: 10px 0 24px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.desktop-gallery::-webkit-scrollbar {
+  display: none;
 }
 .desktop-gallery figure {
+  flex: 0 0 min(680px, 85vw);
+  scroll-snap-align: start;
   margin: 0;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 24px;
   background: rgba(255,255,255,.88);
   box-shadow: 0 24px 70px rgba(7,7,7,.08);
+  position: relative;
+  transition: transform .4s var(--motion-ease), box-shadow .4s var(--motion-ease), border-color .4s var(--motion-ease);
+  will-change: transform, box-shadow;
+  cursor: pointer;
+}
+.desktop-gallery figure::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,.08) 45%, rgba(255,255,255,.16) 50%, rgba(255,255,255,.08) 55%, transparent 60%);
+  background-size: 250% 250%;
+  background-position: 200% 0;
+  transition: background-position .6s ease;
+}
+.desktop-gallery figure:hover::after {
+  background-position: -50% 0;
+}
+.desktop-gallery figure:hover {
+  transform: scale(1.02) translate3d(0, -6px, 0);
+  box-shadow: 0 34px 80px rgba(7,7,7,.15) !important;
+  border-color: var(--gold) !important;
 }
 .desktop-gallery figure:first-child,
 .desktop-gallery figure:nth-child(9) {
@@ -1481,16 +1541,26 @@ p { color: var(--muted); line-height: 1.65; }
     grid-template-columns: none;
     gap: 14px;
     margin-inline: -16px;
+    margin-top: 24px;
     padding: 2px 16px 18px;
     overflow-x: auto;
     overscroll-behavior-inline: contain;
     scroll-snap-type: x mandatory;
+  }
+  .phone-gallery {
+    margin-top: 24px;
+  }
+  .desktop-gallery {
+    margin-top: 24px;
   }
   .case-page .screenshot-gallery .phone-shot {
     scroll-snap-align: start;
   }
 }
 @media (max-width: 620px) {
+  .desktop-br {
+    display: none;
+  }
   .site-header {
     gap: 12px;
     padding: 12px 16px;
@@ -2327,3 +2397,492 @@ p { color: var(--muted); line-height: 1.65; }
     padding-bottom: 20px;
   }
 }
+
+/* ── Lightbox Modal ── */
+.lightbox-modal {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(7, 7, 7, 0.93);
+  backdrop-filter: blur(20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox-modal.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.lightbox-content {
+  position: relative;
+  width: min(90vw, 1200px);
+  height: min(85vh, 800px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox-img {
+  max-width: 100%;
+  max-height: calc(100% - 60px);
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  transform: scale(0.95);
+  transition: transform 0.3s var(--motion-ease);
+}
+.lightbox-modal.is-active .lightbox-img {
+  transform: scale(1);
+}
+.lightbox-caption {
+  margin-top: 18px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 750;
+  text-align: center;
+  max-width: 600px;
+}
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  z-index: 10000;
+}
+.lightbox-close:hover {
+  background: rgba(255,255,255,0.15);
+  transform: scale(1.05);
+}
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  z-index: 10000;
+}
+.lightbox-nav:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-50%) scale(1.05);
+}
+.lightbox-prev { left: 24px; }
+.lightbox-next { right: 24px; }
+
+/* Hide arrows on mobile if it gets too narrow */
+@media (max-width: 720px) {
+  .lightbox-nav {
+    width: 42px;
+    height: 42px;
+  }
+  .lightbox-prev { left: 10px; }
+  .lightbox-next { right: 10px; }
+}
+
+/* ==========================================================================
+   ── Interactive Device Mockups & Slideshow Styles ──
+   ========================================================================== */
+
+/* Device Slider Container */
+.device-slider-container {
+  position: relative;
+  width: 100%;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+/* Ambient Radial Glow */
+.mockup-ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(80vw, 550px);
+  height: min(80vw, 550px);
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.7;
+  transition: opacity 1s ease, filter 1s ease;
+}
+
+/* ── iPhone 15 Pro Vector Mockup ── */
+.iphone-mockup {
+  position: relative;
+  width: 290px;
+  height: 600px;
+  background: #2b2b2b; /* Titanium frame color */
+  border-radius: 46px;
+  padding: 3px; /* Titanium rim gap */
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.4),
+    0 30px 75px rgba(0, 0, 0, 0.5),
+    inset 0 0 3px rgba(255, 255, 255, 0.2);
+  z-index: 2;
+  transition: transform 0.4s var(--motion-ease), box-shadow 0.4s var(--motion-ease);
+  cursor: pointer;
+}
+.iphone-mockup:hover {
+  transform: scale(1.015) translateY(-5px);
+  box-shadow: 
+    0 20px 45px rgba(0, 0, 0, 0.5),
+    0 40px 90px rgba(0, 0, 0, 0.6),
+    inset 0 0 4px rgba(255, 255, 255, 0.3);
+}
+.iphone-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border-radius: 43px;
+  border: 9px solid #000; /* Deep screen bezel */
+  overflow: hidden;
+}
+
+/* Hardware Buttons */
+.iphone-mockup .iphone-button {
+  position: absolute;
+  width: 3.5px;
+  background: #444;
+  border-radius: 2px 0 0 2px;
+  left: -3px;
+  box-shadow: -1px 0 2px rgba(0,0,0,0.4);
+}
+.iphone-mockup .iphone-button.volume-up {
+  top: 110px;
+  height: 42px;
+}
+.iphone-mockup .iphone-button.volume-down {
+  top: 165px;
+  height: 42px;
+}
+.iphone-mockup .iphone-button.power {
+  left: auto;
+  right: -3.5px;
+  top: 130px;
+  height: 65px;
+  border-radius: 0 2px 2px 0;
+  box-shadow: 1px 0 2px rgba(0,0,0,0.4);
+}
+
+/* Dynamic Island */
+.iphone-island {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 82px;
+  height: 22px;
+  background: #000;
+  border-radius: 12px;
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 12px;
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.12);
+}
+.iphone-camera {
+  width: 6px;
+  height: 6px;
+  background: #0a0e28;
+  border-radius: 50%;
+  opacity: 0.65;
+  box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.4);
+}
+
+/* ── MacBook Pro Vector Mockup ── */
+.macbook-mockup {
+  position: relative;
+  width: min(820px, 90vw);
+  margin: 0 auto;
+  z-index: 2;
+  transition: transform 0.4s var(--motion-ease);
+}
+.macbook-mockup:hover {
+  transform: translateY(-5px);
+}
+.macbook-lid {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: #111;
+  border-radius: 16px 16px 0 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 0 0 2px #2b2b2b;
+  overflow: hidden;
+  cursor: pointer;
+}
+.macbook-screen {
+  position: absolute;
+  inset: 12px 12px 0 12px; /* Uniform bezel */
+  border-radius: 6px 6px 0 0;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid #1a1a1a;
+}
+.macbook-webcam {
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  background: #070717;
+  border-radius: 50%;
+  z-index: 10;
+  opacity: 0.75;
+  box-shadow: inset 0 0 1px rgba(255,255,255,0.4);
+}
+.macbook-base {
+  position: relative;
+  width: 114%;
+  height: 12px;
+  left: -7%;
+  background: linear-gradient(to bottom, #4a4a4a 0%, #303030 20%, #151515 100%);
+  border-radius: 0 0 10px 10px;
+  box-shadow: 
+    0 12px 25px rgba(0, 0, 0, 0.4),
+    0 22px 50px rgba(0, 0, 0, 0.3);
+  border-top: 1px solid #5a5a5a;
+  z-index: 3;
+}
+.macbook-base-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: #111;
+  border-radius: 0 0 5px 5px;
+}
+
+/* ── Sliding Track & Inner Slides ── */
+.mockup-slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+.mockup-slides-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transform: translate3d(calc(var(--active-index, 0) * -100%), 0, 0);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+.mockup-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+.mockup-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  border: 0 !important;
+  border-radius: 0 !important;
+  display: block;
+}
+
+/* Glass glare reflection shine overlay */
+.screen-glare {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 30%, transparent 60%);
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* ── Mockup Controls & Captions ── */
+.mockup-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 24px;
+  z-index: 4;
+}
+.mockup-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(20, 20, 20, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  user-select: none;
+}
+.mockup-arrow svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  transition: transform 0.2s ease;
+}
+.mockup-arrow:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #000;
+  transform: scale(1.08);
+  box-shadow: 0 6px 16px rgba(184, 121, 8, 0.3);
+}
+.mockup-arrow:active {
+  transform: scale(0.95);
+}
+.mockup-arrow.prev-slide:hover svg {
+  transform: translateX(-2px);
+}
+.mockup-arrow.next-slide:hover svg {
+  transform: translateX(2px);
+}
+
+.mockup-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 4px 8px;
+}
+.mockup-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.mockup-dot.active {
+  background: var(--gold);
+  width: 22px;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(243, 201, 77, 0.3);
+}
+
+.mockup-caption {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: #a0aec0;
+  text-align: center;
+  max-width: 580px;
+  margin-top: 14px;
+  min-height: 48px; /* reserves height to reduce layout shift */
+  font-style: italic;
+  padding: 0 20px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.mockup-caption.slide-changing {
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+/* ── Responsive Scaling & Adjustments ── */
+@media (max-width: 900px) {
+  .macbook-mockup {
+    max-width: 560px;
+  }
+}
+@media (max-width: 620px) {
+  .macbook-mockup {
+    max-width: 440px;
+  }
+  .iphone-mockup {
+    width: 270px;
+    height: 560px;
+    border-radius: 40px;
+  }
+  .iphone-screen {
+    border-radius: 37px;
+    border-width: 7px;
+  }
+  .iphone-island {
+    width: 72px;
+    height: 18px;
+    top: 10px;
+  }
+  .iphone-mockup .iphone-button.volume-up {
+    top: 95px;
+    height: 38px;
+  }
+  .iphone-mockup .iphone-button.volume-down {
+    top: 145px;
+    height: 38px;
+  }
+  .iphone-mockup .iphone-button.power {
+    top: 115px;
+    height: 55px;
+  }
+}
+@media (max-width: 480px) {
+  .macbook-mockup {
+    max-width: 320px;
+  }
+  .iphone-mockup {
+    width: 250px;
+    height: 520px;
+    border-radius: 36px;
+  }
+  .iphone-screen {
+    border-radius: 33px;
+    border-width: 6px;
+  }
+  .iphone-island {
+    width: 64px;
+    height: 16px;
+    top: 8px;
+  }
+  .device-slider-container {
+    margin: 30px auto;
+  }
+  .mockup-caption {
+    font-size: 13.5px;
+    min-height: 40px;
+  }
+}
+
