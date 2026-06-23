@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="./assets/favicon.png" type="image/png" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Technical case study of stabilizing a production matrimonial Flutter application (Click4Marry) using GetX state management." />
+    <title>click4marry | Muhammed Shabeer</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Click4Marry Case Study | Muhammed Shabeer TM" />
+    <meta property="og:description" content="Technical case study of stabilizing a production matrimonial Flutter application (Click4Marry) using GetX state management." />
+    <meta property="og:image" content="https://meahdev.github.io/assets/hero-portrait.jpg" />
+    <meta property="og:url" content="https://meahdev.github.io/click4marry-case-study.html" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Click4Marry Case Study | Muhammed Shabeer TM" />
+    <meta property="twitter:description" content="Technical case study of stabilizing a production matrimonial Flutter application (Click4Marry) using GetX state management." />
+    <meta property="twitter:image" content="https://meahdev.github.io/assets/hero-portrait.jpg" />
+
+    <link rel="stylesheet" href="./styles.css?v=motion-32" />
+  </head>
+  <body class="case-page">
+    <header class="site-header">
+      <a class="brand" href="./index.html#top"><img width="36" height="36" decoding="async" src="./assets/profile-thumb.jpg?v=photo-20260603b" alt="Muhammed Shabeer TM" /><span>Muhammed Shabeer TM</span></a>
+      <nav id="primary-nav" aria-label="Primary navigation">
+        <a href="./index.html#professional-projects">Work</a>
+        <a href="./about.html">About</a>
+        <a href="./method.html">Method</a>
+        <a href="./index.html#personal-projects">Personal</a>
+        <a href="./index.html#insights">Insights</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+      <a href="./index.html#professional-projects" class="mobile-nav-link">Work</a>
+      <a href="./about.html" class="mobile-nav-link">About</a>
+      <a href="./method.html" class="mobile-nav-link">Method</a>
+      <a href="./index.html#personal-projects" class="mobile-nav-link">Personal</a>
+      <a href="./index.html#insights" class="mobile-nav-link">Insights</a>
+    </nav>
+    <main>
+      <section class="hero section">
+        <a class="back-link" href="./index.html#professional-projects">&larr; Back to home</a>
+        <p class="eyebrow">Technical Deep Dive · Click4Marry</p>
+        <h1>Converting an unstable matrimonial codebase into a high-performance, stable mobile product</h1>
+        <p class="hero-lead">
+          Click4Marry faced severe stability issues, memory leaks, and broken user flows. As part of my role at Seeroo IT Solutions, 
+          I migrated the scattered local state logic to the GetX pattern, decoupled heavy UI widgets from backend services, 
+          and stabilized the matrimonial matchmaking system.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="https://play.google.com/store/apps/details?id=com.madhyamam.click4marry&hl=en_IN" target="_blank" rel="noreferrer">Google Play</a>
+          <a class="button" href="https://apps.apple.com/in/app/click4marry/id1613457079" target="_blank" rel="noreferrer">App Store</a>
+        </div>
+      </section>
+
+      <section class="section case-context">
+        <article><span>Company</span><strong>Seeroo IT Solutions</strong></article>
+        <article><span>Role</span><strong>Flutter Developer (Stabilization & State Management)</strong></article>
+        <article><span>Timeline</span><strong>Dec 2019 – Sep 2023</strong></article>
+        <article><span>Domain</span><strong>Matrimonial, Matchmaking</strong></article>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">What I Worked On</p>
+          <h2>Architecting code stability and predictable state behavior under load</h2>
+        </div>
+        <div class="case-detail-grid">
+          <article>
+            <span>State Architecture</span>
+            <h3>Migration to GetX</h3>
+            <p>Decongested UI code and replaced ad-hoc state-management setups with structured GetX controllers, bringing predictability to heavy workflows.</p>
+          </article>
+          <article>
+            <span>Core Flow Stabilization</span>
+            <h3>Profile Wizard & Matchmaking</h3>
+            <p>Rebuilt the multi-step matrimonial registration flow and refined filter operations, ensuring profiles are safely built and parsed without memory leaks.</p>
+          </article>
+          <article>
+            <span>Network Reliability</span>
+            <h3>Robust API Integration</h3>
+            <p>Optimized data loading behaviors, integrated push notification status updates, and added defensive network exception handling.</p>
+          </article>
+        </div>
+        <div class="case-narrative">
+          <p>
+            When I took over the codebase, the app suffered from frequent freezes and random crashes. State transitions during profile creation and user searching were managed via nested state hacks, making debugging difficult. 
+          </p>
+          <p>
+            By implementing clean state boundaries using GetX controllers, the app gained full crash resiliency. Unhandled exceptions were routed to safe error states instead of bringing down the UI thread. The final release version successfully stabilized the experience for a rapidly growing base of matrimonial seekers.
+          </p>
+          <div class="case-stack">
+            <span>Flutter</span><span>GetX</span><span>API Integration</span><span>Stabilization</span><span>Matrimony Flows</span><span>Dart</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Challenges & Learning</p>
+          <h2>Overcoming legacy state bugs and optimization hurdles</h2>
+        </div>
+        <div class="challenge-grid">
+          <article class="challenge-card">
+            <div>
+              <span>Challenge 01</span>
+              <h3>Unstable screen flows and UI freezes during search filter queries.</h3>
+            </div>
+            <div>
+              <strong>Resolution</strong>
+              <p>Migrated search filters and list rendering workflows into unified GetX controllers, enforcing reactive state updating and offloading data parsing to background tasks.</p>
+              <strong>Benefit</strong>
+              <p>Eliminated UI thread stutters and ensured complex matrimonial criteria searches execute instantly without locking the screen.</p>
+            </div>
+          </article>
+          <article class="challenge-card">
+            <div>
+              <span>Challenge 02</span>
+              <h3>Data loss and crashes during long, multi-step profile registration.</h3>
+            </div>
+            <div>
+              <strong>Resolution</strong>
+              <p>Reconstructed the profile wizard to persist intermediate state objects via a centralized registration GetX controller that only updates local data tables on step completion.</p>
+              <strong>Benefit</strong>
+              <p>Allowed users to drop off and resume registration seamlessly, drastically reducing sign-up friction and app crashes.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact-section">
+        <p class="eyebrow">Contact</p>
+        <h2>Ready to discuss senior Flutter, mobile architecture, or product engineering roles</h2>
+        <p class="contact-links">
+          <span>Email: <a href="mailto:muhmmdshabeer@gmail.com">muhmmdshabeer@gmail.com</a></span>
+          <span class="contact-sep">&nbsp;·&nbsp;</span>
+          <span>Phone: <a href="tel:+919567200188">+91 95672 00188</a></span>
+        </p>
+        <div class="hero-actions center">
+          <a class="button primary" href="mailto:muhmmdshabeer@gmail.com">Email Me</a>
+          <a class="button" href="https://linkedin.com/in/muhammed-shabeer-tm-55271018b" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="button" href="https://github.com/meahdev" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="button" href="https://medium.com/@muhmmdshabeer" target="_blank" rel="noreferrer">Medium</a>
+        </div>
+      </section>
+    </main>
+    <script src="./site.js?v=motion-25" defer></script>
+  </body>
+</html>
