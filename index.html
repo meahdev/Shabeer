@@ -6,21 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Muhammed Shabeer TM portfolio - Senior Flutter Developer and product-minded mobile engineer." />
     <title>Muhammed Shabeer</title>
+    <link rel="canonical" href="https://mshabeer.com/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Muhammed Shabeer TM | Senior Flutter Developer" />
     <meta property="og:description" content="Muhammed Shabeer TM portfolio - Senior Flutter Developer and product-minded mobile engineer." />
-    <meta property="og:image" content="https://meahdev.github.io/assets/hero-portrait.jpg" />
-    <meta property="og:url" content="https://meahdev.github.io/index.html" />
+    <meta property="og:image" content="https://mshabeer.com/assets/hero-portrait.jpg" />
+    <meta property="og:url" content="https://mshabeer.com/" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content="Muhammed Shabeer TM | Senior Flutter Developer" />
     <meta property="twitter:description" content="Muhammed Shabeer TM portfolio - Senior Flutter Developer and product-minded mobile engineer." />
-    <meta property="twitter:image" content="https://meahdev.github.io/assets/hero-portrait.jpg" />
+    <meta property="twitter:image" content="https://mshabeer.com/assets/hero-portrait.jpg" />
 
     <link rel="stylesheet" href="./styles.css?v=motion-32" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Muhammed Shabeer TM",
+      "url": "https://mshabeer.com/",
+      "image": "https://mshabeer.com/assets/hero-portrait.jpg",
+      "jobTitle": "Senior Flutter Developer",
+      "sameAs": [
+        "https://github.com/meahdev",
+        "https://linkedin.com/in/muhammed-shabeer-tm-55271018b",
+        "https://medium.com/@muhmmdshabeer"
+      ]
+    }
+    </script>
   </head>
   <body>
     <header class="site-header">
@@ -339,7 +356,10 @@
             <div class="project-copy">
               <a href="./work-tracker.html" class="main-card-link" aria-label="Technical Deep Dive into Photography Work Tracker"></a>
               <div class="project-title-row">
-                <img loading="lazy" decoding="async" class="project-logo" src="./assets/work-tracker-icon-thumb.png" alt="Photography Work Tracker icon" style="object-fit: cover;" />
+                <picture>
+                  <source srcset="./assets/work-tracker-icon-thumb.webp" type="image/webp" />
+                  <img loading="lazy" decoding="async" class="project-logo" src="./assets/work-tracker-icon-thumb.png" alt="Photography Work Tracker icon" style="object-fit: cover;" />
+                </picture>
                 <div>
                   <span class="tag">Studio Productivity · Personal Project</span>
                   <h3>Photography Work Tracker</h3>

@@ -147,12 +147,14 @@
     const openNav = () => {
       mobileNav.classList.add("is-open");
       navToggle.setAttribute("aria-expanded", "true");
+      document.documentElement.style.overflow = "hidden";
       document.body.style.overflow = "hidden";
     };
 
     const closeNav = () => {
       mobileNav.classList.remove("is-open");
       navToggle.setAttribute("aria-expanded", "false");
+      document.documentElement.style.overflow = "";
       document.body.style.overflow = "";
     };
 
@@ -430,11 +432,13 @@
     const openModal = (index) => {
       updateModalContent(index);
       modal.classList.add("is-active");
+      document.documentElement.style.overflow = "hidden";
       document.body.style.overflow = "hidden";
     };
 
     const closeModal = () => {
       modal.classList.remove("is-active");
+      document.documentElement.style.overflow = "";
       document.body.style.overflow = "";
     };
 
